@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+import { ComicsProjectGallery } from './comics/comics-project-gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    ComicsProjectGallery
   ],
   imports: [
     BrowserModule,

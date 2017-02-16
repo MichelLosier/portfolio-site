@@ -1,10 +1,8 @@
 
 h1 {
 	font-size: 1.75rem;
-
 }
 nav {
-	padding-left:20%;
 	display:flex;
 	border-bottom: 1px solid #666;
 	height: 2rem;
@@ -12,6 +10,7 @@ nav {
 	justify-content: space-around;
 }
 nav a {
+	color: #666;
 	cursor: pointer;
 	padding: 0 1rem;
 	text-decoration:none;
@@ -25,4 +24,9 @@ nav a:visted, a:link {
 }
 nav a.active {
 	color: #e26e26;
+}
+.view-container {
+	width: 75%;
+	margin: 0 auto;
+	padding: 2em;
 }

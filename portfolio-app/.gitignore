@@ -7,6 +7,10 @@
 # dependencies
 /node_modules
 
+# Images for gallery
+/src/assets/comics
+/src/assets/illustration
+
 # IDEs and editors
 /.idea
 .project
