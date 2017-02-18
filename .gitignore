@@ -4,12 +4,15 @@
 /dist
 /tmp
 
+#environment variables
+*.env
+
 # dependencies
 /node_modules
 
 # Images for gallery
-/src/assets/comics
-/src/assets/illustration
+/src/assets/images/comics/*
+/src/assets/images/illustration/*
 
 # IDEs and editors
 /.idea
