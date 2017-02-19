@@ -1,9 +1,14 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const projectCtrl = require('../controllers/projectController');
 
-router.get('/', (req, res) => {
-	res.send('api works')
-});
+//0
+router.get('/portfolio', projectCtrl.listAll);
+
+router.get('/portfolio/:category', projectCtrl.categoryListAll);
+
+
+
 
 module.exports = router;

@@ -3,6 +3,16 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require ('body-parser');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
+//Load environment variables
+dotenv.load({path: './server/app.env'});
+mongoose.connect(process.env.MLAB_DB_URI);
+
+var db = mongoose.connection;
+mongoose.Promise = global.Promise;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Routers
 const api = require('./server/routes/api');
@@ -29,5 +39,5 @@ app.set('port', port);
 const server = http.createServer(app);
 
 server.listen(port, () => {
-	console.log(`API running on localhost:${port}`);
+	console.log(`app running on localhost:${port}`);
 });
