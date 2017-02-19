@@ -1,4 +1,7 @@
 <h2>comics</h2>
 <div class="gallery-container">
-
+	<div *ngFor="let project of projects">
+		<h3>{{project.name}}</h3>
+		<img class="preview-image" [src]="imagesUrl + project.location + project.featuredImage"/>
+	</div>
 </div>

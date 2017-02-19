@@ -1,3 +1,8 @@
 .gallery-container {
 	display:flex;
 }
+
+img.preview-image {
+	width: 300px;
+	height:auto;
+}

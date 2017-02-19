@@ -8,8 +8,9 @@ const mongoose = require('mongoose');
 
 //Load environment variables
 dotenv.load({path: './server/app.env'});
-mongoose.connect(process.env.MLAB_DB_URI);
 
+//Connect to DB
+mongoose.connect(process.env.MLAB_DB_URI);
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -33,6 +34,7 @@ app.use('/api', api);
 //All other routes go to index
 app.use('*', index);
 
+//set port and initialize
 const port = process.env.PORT || '3000';
 app.set('port', port);
 

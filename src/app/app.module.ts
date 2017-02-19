@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectGallery } from './project-gallery/project-gallery.component';
+import { ProjectGalleryService } from './project-gallery/project-gallery.service'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ProjectGallery } from './project-gallery/project-gallery.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ ProjectGalleryService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
