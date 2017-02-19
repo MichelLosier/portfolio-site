@@ -1,7 +1,20 @@
 .gallery-container {
 	display:flex;
 }
-
+.project-container {
+	margin: 1em;
+}
+.project-container h3 {
+	text-align:center;
+}
+.preview-container {
+	border: 1px solid #666;
+	padding: 1em;
+}
+.preview-container:hover {
+	border-color:#e26e26;
+	cursor: pointer;
+}
 img.preview-image {
 	width: 300px;
 	height:auto;
