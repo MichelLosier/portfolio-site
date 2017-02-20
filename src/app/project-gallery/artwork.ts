@@ -1,5 +1,7 @@
 export class Artwork {
-	order: number;
+	projects: string[];
+	dateAdded: string;
+	location: string;
 	preview: string;
 	normal: string;
 	large: string;

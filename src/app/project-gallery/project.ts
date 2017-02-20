@@ -6,7 +6,6 @@ export class Project {
 	position: number;
 	dateAdded: string;
 	description: string;
-	location: string;
 	featuredImage: string;
 	category: string[];
 	tags: string[];

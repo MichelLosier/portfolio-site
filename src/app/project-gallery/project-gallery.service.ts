@@ -10,19 +10,19 @@ import { Artwork } from './artwork';
 
 export class ProjectGalleryService {
 	private headers = new Headers({'Content-Type': 'application/json'});
-	private projectUrl = 'api/portfolio';
+	private projectsUrl = 'api/projects';
 
 	constructor(private http: Http) {}
 
 	getAllProjects(): Promise <Project[]> {
-		return this.http.get(this.projectUrl)
+		return this.http.get(this.projectsUrl)
 			.toPromise()
 			.then(response => response.json().data as Project[])
 			.catch(this.handleError);
 	}
 
 	getAllProjectsCategory(category: string): Promise <Project[]> {
-		const url = `${this.projectUrl}?category=${category}`;
+		const url = `${this.projectsUrl}?category=${category}`;
 		return this.http.get(url)
 			.toPromise()
 			.then(response => response.json() as Project[])

@@ -15,3 +15,9 @@ exports.categoryListAll = function (req, res, next) {
 	});
 };
 
+//get project by id
+exports.queryID = function(req, res, next) {
+	Project.find({_id:ObjectId(req.params.id)}, function(err, doc){
+		res.json(doc);
+	});
+};
