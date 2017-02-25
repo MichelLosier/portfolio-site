@@ -1,9 +1,9 @@
-<h2>comics</h2>
+<h2>{{category}}</h2>
 <div class="gallery-container">
 	<div class="project-container" *ngFor="let project of projects">
 		<h3>{{project.name}}</h3>
 		<div class="preview-container">
-			<gallery-image [id]='project.featuredImage'>Loading...</gallery-image>
+			<gallery-image [id]='project.featuredImage'></gallery-image>
 		</div>
 	</div>
 </div>

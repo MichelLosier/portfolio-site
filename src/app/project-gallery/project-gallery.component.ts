@@ -18,7 +18,6 @@ import 'rxjs/add/operator/mergeMap';
 export class ProjectGallery implements OnInit {
 	projects: Project[];
 	category: string;
-	
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,

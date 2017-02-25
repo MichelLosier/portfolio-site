@@ -12,6 +12,10 @@ const ROUTES: Routes = [
 	{
 		path: 'comics',
 		component: ProjectGallery
+	},
+	{
+		path:'illustration',
+		component: ProjectGallery
 	}
 ]
 

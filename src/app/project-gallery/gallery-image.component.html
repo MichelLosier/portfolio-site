@@ -1,0 +1,7 @@
+<img 
+	[class.loading]="loading"
+	[alt]="altText"
+	[src]="imageUrl"
+	(error)="tempLoad($event)"
+	(load)="loading = false"
+	/>

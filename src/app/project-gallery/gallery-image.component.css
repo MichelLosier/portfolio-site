@@ -1,0 +1,12 @@
+img { 
+	width: 300px; 
+	height:auto;
+	}
+img.loading {
+	height:350px;
+	background-color:white;
+	text-align:center;
+	line-height: 300px;
+	color:#e26e26;
+	font-weight:bolder;
+}
