@@ -2,36 +2,32 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
-import { Project } from './project';
+import { Artwork } from './artwork';
 
 @Injectable()
 
-export class ProjectGalleryService {
+export class ArtworkService {
 	private headers = new Headers({'Content-Type': 'application/json'});
-	private projectsUrl = 'api/projects/';
+	private artworkUrl = 'api/artwork/';
 
 	constructor(private http: Http) {}
 
-	getAllProjects(): Observable<Project[]> {
-		return this.http.get(this.projectsUrl)
-				.map(response => response.json())
-				.catch(this.handleError);
+	getArtworkByID(artworkID: string): Observable <Artwork> {
+		const url = `${this.artworkUrl}id/${artworkID}`;
+		console.log(url);
+		return this.http.get(url)
+			.map(response => response.json())
+			.catch(this.handleError);
 	}
 
-	getAllProjectsCategory(category: string): Observable<Project[]> {
-		const url = `${this.projectsUrl}category/${category}`;
+	getArtworkByProjectID(projectID: string): Observable<Artwork[]> {
+		const url = `${this.artworkUrl}/project/${projectID}`;
 		return this.http.get(url)
-			.map(response => response.json());
-	}
-
-	getProjectByID(projectID: string): Observable <Project> {
-		const url = `${this.projectsUrl}id/${projectID}`;
-		return this.http.get(url)
-			.map(response => response.json() as Project)
+			.map(response => response.json())
 			.catch(this.handleError);
 	}
 
@@ -47,5 +43,4 @@ export class ProjectGalleryService {
 	   console.error(errMsg);
 	   return Observable.throw(errMsg);
 	 }
-
 }

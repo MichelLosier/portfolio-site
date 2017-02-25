@@ -3,7 +3,7 @@
 	<div class="project-container" *ngFor="let project of projects">
 		<h3>{{project.name}}</h3>
 		<div class="preview-container">
-			<img class="preview-image" [src]="imagesUrl + project.location + project.featuredImage"/>
+			<gallery-image [id]='project.featuredImage'>Loading...</gallery-image>
 		</div>
 	</div>
 </div>

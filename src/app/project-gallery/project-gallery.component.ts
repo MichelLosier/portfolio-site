@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from './project';
+import { GalleryImage } from './gallery-image.component';
+
 import { ProjectGalleryService } from './project-gallery.service';
+
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
+
 @Component({
 	moduleId: module.id,
 	selector: 'project-gallery',
@@ -11,19 +16,22 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ProjectGallery implements OnInit {
-	projects: Project[] = []
+	projects: Project[];
 	category: string;
-	imagesUrl = "../assets/images/"
+	
+
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
 		private route: ActivatedRoute ) {
-
-		
 		}
 
 	ngOnInit(): void {
-		this.category = this.route.url[0];
-		this.projectGalleryService.getAllProjectsCategory(this.category)
-			.then(projects => this.projects = projects );
+		this.category = this.route.routeConfig.path;
+		this.getProjects(this.category);
 	}
+	getProjects(category: string): void {
+		this.projectGalleryService.getAllProjectsCategory(category)
+			.subscribe(project => this.projects = project);
+	}
+
 }

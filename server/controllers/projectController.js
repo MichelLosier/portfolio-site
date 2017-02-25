@@ -9,7 +9,7 @@ exports.listAll = function(req, res, next){
 };
 //get all projects by category type
 exports.categoryListAll = function (req, res, next) {
-	Project.find({ category: req.params.category }, function(err, docs) {
+	Project.find({ category: req.params.cat }, function(err, docs) {
 		if(err) return console.error(err);
 		res.json(docs);
 	});
@@ -17,7 +17,7 @@ exports.categoryListAll = function (req, res, next) {
 
 //get project by id
 exports.queryID = function(req, res, next) {
-	Project.find({_id:ObjectId(req.params.id)}, function(err, doc){
+	Project.findOne({_id: req.params._id}, function(err, doc){
 		res.json(doc);
 	});
 };

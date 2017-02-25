@@ -8,13 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectGallery } from './project-gallery/project-gallery.component';
+import { GalleryImage } from './project-gallery/gallery-image.component';
 import { ProjectGalleryService } from './project-gallery/project-gallery.service'
+import { ArtworkService } from './project-gallery/artwork.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    ProjectGallery
+    ProjectGallery,
+    GalleryImage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { ProjectGalleryService } from './project-gallery/project-gallery.service
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ ProjectGalleryService ],
+  providers: [ ProjectGalleryService, ArtworkService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

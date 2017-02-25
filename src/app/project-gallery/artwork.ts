@@ -8,4 +8,5 @@ export class Artwork {
 	caption: string;
 	description: string;
 	altText: string;
+	}
 }
