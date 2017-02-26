@@ -2,8 +2,17 @@
 <div class="gallery-container">
 	<div class="project-container" *ngFor="let project of projects">
 		<h3>{{project.name}}</h3>
-		<div class="preview-container">
+		<div 
+		(click)="selectProject(project)"
+		class="preview-container">
+			<div 
+				*ngIf="selectedProject == project"
+				class="description">
+					<p>{{project.description}}</p>
+			
+			</div>
 			<gallery-image [id]='project.featuredImage'></gallery-image>
+
 		</div>
 	</div>
 </div>

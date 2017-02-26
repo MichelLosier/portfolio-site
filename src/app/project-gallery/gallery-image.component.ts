@@ -42,7 +42,7 @@ export class GalleryImage implements OnInit {
 	tempLoad(event): void {
 		this.imageUrl = ""
 		this.loading = true;
-		this.altText ="loading..."
+		this.altText ="..."
 	}
 
 }
