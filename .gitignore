@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
+
 /tmp
 
 #environment variables
@@ -11,8 +11,7 @@
 /node_modules
 
 # Images for gallery
-/src/assets/images/comics/*
-/src/assets/images/illustration/*
+
 
 # IDEs and editors
 /.idea

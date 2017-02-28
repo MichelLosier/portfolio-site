@@ -10,7 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "ng build",
-    "postinstall" : "ng build"
   },
   "engines": {
   "node": "6.9.2",
