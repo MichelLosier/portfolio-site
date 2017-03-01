@@ -1,11 +1,12 @@
 //Dependencies
-require('newrelic');
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require ('body-parser');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
+require('newrelic');
 
 //Load environment variables
 dotenv.load({path: './server/app.env'});
