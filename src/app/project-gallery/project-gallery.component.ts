@@ -34,7 +34,11 @@ export class ProjectGallery implements OnInit {
 			.subscribe(project => this.projects = project);
 	}
 	selectProject(project: Project): void {
-		this.selectedProject = project
+		if (this.selectedProject === project){
+			this.selectedProject = undefined;
+		} else {
+			this.selectedProject = project
+		}
 	}
 
 }

@@ -1,0 +1,6 @@
+<div *ngIf="project">
+	<h2>{{project.name}}</h2>
+	<div *ngFor="let artwork of project.gallery">
+		<gallery-image [id]="artwork"></gallery-image>
+	</div>
+</div>
