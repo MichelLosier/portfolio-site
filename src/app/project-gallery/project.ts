@@ -1,7 +1,7 @@
 import { Artwork } from './artwork';
 import { Observable } from 'rxjs/Observable';
 export class Project {
-	_id: number;
+	_id: string;
 	name: string;
 	position: number;
 	dateAdded: string;

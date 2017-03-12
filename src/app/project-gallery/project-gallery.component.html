@@ -4,12 +4,15 @@
 		<h3>{{project.name}}</h3>
 		<div 
 		(click)="selectProject(project)"
+		[class.selected]="selectedProject == project"
 		class="preview-container">
 			<div 
-				*ngIf="selectedProject == project"
-				class="description">
+			*ngIf="selectedProject == project"
+			class="description">
 					<p>{{project.description}}</p>
-			
+					<div class="view button"
+						[routerLink]="['/project', project._id]"
+					>View</div>
 			</div>
 			<gallery-image [id]='project.featuredImage'></gallery-image>
 

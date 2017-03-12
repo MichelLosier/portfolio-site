@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
 import { ProjectGallery } from './project-gallery/project-gallery.component';
+import { ProjectDetail } from './project-gallery/project-detail.component'
 
 const ROUTES: Routes = [
 	{
@@ -16,6 +17,10 @@ const ROUTES: Routes = [
 	{
 		path:'illustration',
 		component: ProjectGallery
+	},
+	{
+		path: 'project/:id',
+		component: ProjectDetail
 	}
 ]
 
