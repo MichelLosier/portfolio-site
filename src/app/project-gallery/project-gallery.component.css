@@ -26,12 +26,21 @@
 	background:rgba(256,256,256, 0.95);
 	display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
     text-align: left;
+    flex-direction:column;
 }
 .description p {
 	text-align: left;
 }
 .selected {
 	border-color:#e26e26;
+}
+.view-button {
+	padding: 1rem 3rem;
+	border: 1px solid #666;
+}
+.view-button:hover {
+	border-color:#e26e26;
+	cursor: pointer;
 }
