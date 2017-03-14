@@ -19,7 +19,8 @@ import 'rxjs/add/operator/switchMap'
 export class ProjectDetail implements OnInit {
 	project: Project;
 	category: string; //category determines css class for laying out artwork: illustration is grid, comics more sequence
-
+	includeCaptions = true;
+	
 	constructor(
 		private projectService: ProjectGalleryService,
 		private route: ActivatedRoute
@@ -31,7 +32,9 @@ export class ProjectDetail implements OnInit {
 			.switchMap((params: Params) => this.getProject(params['id']))
 			.subscribe((project: Project )=> {
 				console.log(`project: ${project}`);
-				this.project = project});
+				this.project = project
+				this.category = project.category[0]
+			});
 		
 	}
 	getProject(projectId: string){

@@ -1,6 +1,13 @@
 <div *ngIf="project">
 	<h2>{{project.name}}</h2>
-	<div *ngFor="let artwork of project.gallery">
-		<gallery-image [id]="artwork"></gallery-image>
+	<div class="description-container">
+		<p>{{project.description}}</p>
+	</div>
+	<div class="artwork-container" *ngFor="let artworkID of project.gallery">
+		<gallery-image 
+			[id]="artworkID"
+			[showCaption]="includeCaptions"
+		></gallery-image>
+		
 	</div>
 </div>

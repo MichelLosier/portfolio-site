@@ -18,7 +18,8 @@ export class GalleryImage implements OnInit {
 	loading: boolean = true;
 	altText: string;
 	@Input() id: string = null;
-
+	@Input() showCaption: boolean = false;
+	
 	constructor(
 		private artworkService: ArtworkService,
 		){}
