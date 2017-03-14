@@ -26,15 +26,21 @@
 	background:rgba(256,256,256, 0.95);
 	display: flex;
     align-items: center;
+<<<<<<< HEAD
     justify-content: space-around;
     text-align: left;
     flex-direction:column;
+=======
+    justify-content: flex-start;
+    text-align: left;
+>>>>>>> de62c4df51c5b0bfc5bf5292699a29502702513d
 }
 .description p {
 	text-align: left;
 }
 .selected {
 	border-color:#e26e26;
+<<<<<<< HEAD
 }
 .view-button {
 	padding: 1rem 3rem;
@@ -43,4 +49,6 @@
 .view-button:hover {
 	border-color:#e26e26;
 	cursor: pointer;
+=======
+>>>>>>> de62c4df51c5b0bfc5bf5292699a29502702513d
 }

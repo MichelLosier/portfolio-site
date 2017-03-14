@@ -605,7 +605,11 @@ module.exports = ""
 /***/ 520:
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = ".gallery-container {\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n}\n.project-container {\n\tmargin: 1em;\n}\n.project-container h3 {\n\ttext-align:center;\n}\n.preview-container {\n\theight:350px;\n\twidth:300px;\n\tborder: 1px solid #666;\n\tpadding: 1em;\n}\n.preview-container:hover {\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}\n.description {\n\tcolor:#e26e26;\n\tpadding:1rem;\n\tposition:absolute;\n\theight: 325px;\n\twidth: 275px;\n\tbackground:rgba(256,256,256, 0.95);\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    text-align: left;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n}\n.description p {\n\ttext-align: left;\n}\n.selected {\n\tborder-color:#e26e26;\n}\n.view-button {\n\tpadding: 1rem 3rem;\n\tborder: 1px solid #666;\n}\n.view-button:hover {\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}"
+=======
+module.exports = ".gallery-container {\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n}\n.project-container {\n\tmargin: 1em;\n}\n.project-container h3 {\n\ttext-align:center;\n}\n.preview-container {\n\theight:350px;\n\twidth:300px;\n\tborder: 1px solid #666;\n\tpadding: 1em;\n}\n.preview-container:hover {\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}\n.description {\n\tcolor:#e26e26;\n\tpadding:1rem;\n\tposition:absolute;\n\theight: 325px;\n\twidth: 275px;\n\tbackground:rgba(256,256,256, 0.95);\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: start;\n        -ms-flex-pack: start;\n            justify-content: flex-start;\n    text-align: left;\n}\n.description p {\n\ttext-align: left;\n}\n.selected {\n\tborder-color:#e26e26;\n}"
+>>>>>>> de62c4df51c5b0bfc5bf5292699a29502702513d
 
 /***/ }),
 
@@ -640,7 +644,11 @@ module.exports = "<div *ngIf=\"project\">\n\t<h2>{{project.name}}</h2>\n\t<div *
 /***/ 525:
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<h2>{{category}}</h2>\n<div class=\"gallery-container\">\n\t<div class=\"project-container\" *ngFor=\"let project of projects\">\n\t\t<h3>{{project.name}}</h3>\n\t\t<div \n\t\t(click)=\"selectProject(project)\"\n\t\t[class.selected]=\"selectedProject == project\"\n\t\tclass=\"preview-container\">\n\t\t\t<div \n\t\t\t*ngIf=\"selectedProject == project\"\n\t\t\tclass=\"description\">\n\t\t\t\t\t<p>{{project.description}}</p>\n\t\t\t\t\t<div class=\"view-button\"\n\t\t\t\t\t\t[routerLink]=\"['/project', project._id]\"\n\t\t\t\t\t>View</div>\n\t\t\t</div>\n\t\t\t<gallery-image [id]='project.featuredImage'></gallery-image>\n\n\t\t</div>\n\t</div>\n</div>"
+=======
+module.exports = "<h2>{{category}}</h2>\n<div class=\"gallery-container\">\n\t<div class=\"project-container\" *ngFor=\"let project of projects\">\n\t\t<h3>{{project.name}}</h3>\n\t\t<div \n\t\t(click)=\"selectProject(project)\"\n\t\t[class.selected]=\"selectedProject == project\"\n\t\tclass=\"preview-container\">\n\t\t\t<div \n\t\t\t*ngIf=\"selectedProject == project\"\n\t\t\tclass=\"description\">\n\t\t\t\t\t<p>{{project.description}}</p>\n\t\t\t\t\t<div class=\"view button\"\n\t\t\t\t\t\t[routerLink]=\"['/project', project._id]\"\n\t\t\t\t\t>View</div>\n\t\t\t</div>\n\t\t\t<gallery-image [id]='project.featuredImage'></gallery-image>\n\n\t\t</div>\n\t</div>\n</div>"
+>>>>>>> de62c4df51c5b0bfc5bf5292699a29502702513d
 
 /***/ }),
 
