@@ -32,9 +32,9 @@ nav#main-nav li {
 	padding-bottom:2rem;
 }
 nav#main-nav a {
+	padding:1rem;
 	color: #666;
 	cursor: pointer;
-	padding: 0 1rem;
 	text-decoration:none;
 }
 nav#main-nav li:hover {

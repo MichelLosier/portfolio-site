@@ -33,13 +33,13 @@ export class ProjectDetail implements OnInit {
 			.subscribe((project: Project )=> {
 				console.log(`project: ${project}`);
 				this.project = project
-				this.category = project.category[0]
+				this.category = project.category[0];
 			});
 		
 	}
 	getProject(projectId: string){
 		console.log(`getProject was passed: ${projectId}`);
-		return this.projectService.getProjectByID(projectId)
+		return this.projectService.getProjectByID(projectId);
 			
 	}
 
