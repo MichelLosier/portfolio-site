@@ -591,7 +591,7 @@ module.exports = ""
 /***/ 517:
 /***/ (function(module, exports) {
 
-module.exports = "\nh1 {\n\tfont-size: 1.75rem;\n}\nnav {\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n\tborder-bottom: 1px solid #666;\n\theight: 2rem;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-flow: row nowrap;\n\t        flex-flow: row nowrap;\n\t-ms-flex-pack: distribute;\n\t    justify-content: space-around;\n}\nnav a {\n\tcolor: #666;\n\tcursor: pointer;\n\tpadding: 0 1rem;\n\ttext-decoration:none;\n}\nnav a:hover {\n\tcolor: #e26e26;\n\tborder-bottom: 6px solid #e26e26;\n}\nnav a:visted, a:link {\n\tcolor: #e26e26;\n}\nnav a.active {\n\tcolor: #e26e26;\n}\n.view-container {\n\twidth: 75%;\n\tmargin: 0 auto;\n\tpadding: 2em;\n}"
+module.exports = "\nh1 {\n\tfont-size: 1.75rem;\n\ttext-align:center;\n}\nheader#main-header {\n\tborder-bottom: 1px solid #666;\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n\t-webkit-box-orient:horizontal;\n\t-webkit-box-direction:normal;\n\t    -ms-flex-flow:row wrap;\n\t        flex-flow:row wrap;\n\t-webkit-box-pack:start;\n\t    -ms-flex-pack:start;\n\t        justify-content:flex-start;\n}\ndiv#title-container {\n\tpadding: 1rem 1rem 0 1rem;\n\tmargin-right: 1rem;\n\t-webkit-box-flex:1;\n\t    -ms-flex-positive:1;\n\t        flex-grow:1;\n}\nnav#main-nav {\n\t-webkit-box-flex:8;\n\t    -ms-flex-positive:8;\n\t        flex-grow:8;\n\tpadding-top:3rem;\n}\nnav#main-nav ul {\n\tpadding:0;\n\tmargin:0;\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n\theight: 2rem;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-flow: row nowrap;\n\t        flex-flow: row nowrap;\n\t-ms-flex-pack: distribute;\n\t    justify-content: space-around;\n\n}\nnav#main-nav li {\n\tdisplay:inline-block;\n\tpadding-bottom:2rem;\n}\nnav#main-nav a {\n\tcolor: #666;\n\tcursor: pointer;\n\tpadding: 0 1rem;\n\ttext-decoration:none;\n}\nnav#main-nav li:hover {\n\tcolor: #e26e26;\n\tborder-bottom: 6px solid #e26e26;\n}\nnav#main-nav a:hover {\n\tcolor: #e26e26;\n}\nnav#main-nav a.active {\n\tcolor: #e26e26;\n}\n.main-view-container {\n\twidth: 75%;\n\tmargin: 0 auto;\n\tpadding: 2rem;\n}"
 
 /***/ }),
 
@@ -626,7 +626,7 @@ module.exports = "\n\t<h2>about</h2>\n\t<p>Michel is an artist in Portland, OR. 
 /***/ 522:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\n  {{title}}\n</h1>\n<nav>\n\t<a routerLink=\"/about\" routerLinkActive=\"active\">about</a>\n\t<a routerLink=\"/illustration\" routerLinkActive=\"active\">illustration</a>\n\t<a routerLink=\"/comics\" routerLinkActive=\"active\">comics</a>\n</nav>\n<div class=\"view-container\">\n\t<router-outlet></router-outlet>\n</div>"
+module.exports = "<header id=\"main-header\">\n\t<div id=\"title-container\">\n\t\t<h1>\n\t\t  {{title}}\n\t\t</h1>\n\t</div>\n\t<nav id=\"main-nav\">\n\t\t<ul>\n\t\t\t<li>\n\t\t\t\t<a routerLink=\"/about\" routerLinkActive=\"active\">about</a>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t\t<a routerLink=\"/illustration\" routerLinkActive=\"active\">illustration</a>\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t\t<a routerLink=\"/comics\" routerLinkActive=\"active\">comics</a>\n\t\t\t</li>\n\t\t</ul>\n\t</nav>\n</header>\n<div class=\"main-view-container\">\n\t<router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 

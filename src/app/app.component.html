@@ -1,11 +1,23 @@
-<h1>
-  {{title}}
-</h1>
-<nav>
-	<a routerLink="/about" routerLinkActive="active">about</a>
-	<a routerLink="/illustration" routerLinkActive="active">illustration</a>
-	<a routerLink="/comics" routerLinkActive="active">comics</a>
-</nav>
-<div class="view-container">
+<header id="main-header">
+	<div id="title-container">
+		<h1>
+		  {{title}}
+		</h1>
+	</div>
+	<nav id="main-nav">
+		<ul>
+			<li>
+				<a routerLink="/about" routerLinkActive="active">about</a>
+			</li>
+			<li>
+				<a routerLink="/illustration" routerLinkActive="active">illustration</a>
+			</li>
+			<li>
+				<a routerLink="/comics" routerLinkActive="active">comics</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<div class="main-view-container">
 	<router-outlet></router-outlet>
 </div>
