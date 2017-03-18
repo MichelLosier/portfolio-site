@@ -4,12 +4,15 @@
 		<div class="description-container">
 			<p>{{project.description}}</p>
 		</div>
-		<div class="artwork-container" *ngFor="let artworkID of project.gallery">
+		<div 
+			class="artwork-container"
+			[ngClass]="category" 
+			*ngFor="let artworkID of project.gallery">
 			<gallery-image 
 				[id]="artworkID"
 				[showCaption]="includeCaptions"
-			></gallery-image>
-			
+			></gallery-image>	
 		</div>
+
 	</div>
 </div>

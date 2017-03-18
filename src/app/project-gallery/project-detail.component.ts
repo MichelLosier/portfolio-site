@@ -33,7 +33,7 @@ export class ProjectDetail implements OnInit {
 			.subscribe((project: Project )=> {
 				console.log(`project: ${project}`);
 				this.project = project
-				this.category = project.category[0];
+				this.category = project.category;
 			});
 		
 	}

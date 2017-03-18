@@ -218,7 +218,7 @@ var ProjectDetail = (function () {
             .subscribe(function (project) {
             console.log("project: " + project);
             _this.project = project;
-            _this.category = project.category[0];
+            _this.category = project.category;
         });
     };
     ProjectDetail.prototype.getProject = function (projectId) {
@@ -598,21 +598,21 @@ module.exports = "\nh1 {\n\tfont-size: 1.75rem;\n\ttext-align:center;\n}\nheader
 /***/ 518:
 /***/ (function(module, exports) {
 
-module.exports = "img { \n\tdisplay:block;\n\tmax-width:100%;\n\tmax-height:100%;\n\twidth: auto; \n\tmargin: 0 auto;\n\t}\nimg.loading {\n\twidth:100%;\n\theight:100%;\n\tbackground-color:white;\n\ttext-align:center;\n\tfont-size:2rem;\n\tline-height: 300px;\n\tcolor:#e26e26;\n}\n.caption {\n\ttext-align:center;\n}\n"
+module.exports = "img { \n\tdisplay:block;\n\tmax-width:100%;\n\tmax-height:100%;\n\twidth: auto; \n\tmargin: 0 auto;\n\t}\nimg.loading {\n\twidth:100%;\n\theight:100%;\n\tbackground-color:white;\n\ttext-align:center;\n\tfont-size:2rem;\n\tline-height: 300px;\n\tcolor:#e26e26;\n}\n.caption {\n\tfont-size: 1rem;\n\ttext-align:center;\n}\n"
 
 /***/ }),
 
 /***/ 519:
 /***/ (function(module, exports) {
 
-module.exports = "h2 {\n\ttext-align:center;\n}\n.description-container {\n\tmargin: 0 auto;\n\ttext-align: center;\n\tborder-top: 1px solid #666;\n\tborder-bottom: 1px solid #666;\n\twidth: 50%;\n\n}\n.artwork-container {\n\twidth:75%;\n\ttext-align: center;\n\tmargin:3rem auto;\n}"
+module.exports = "h2 {\n\ttext-align:center;\n}\n.description-container {\n\tmargin: 0 auto;\n\ttext-align: center;\n\tborder-top: 1px solid #666;\n\tborder-bottom: 1px solid #666;\n\twidth: 50%;\n\n}\n.artwork-container {\n\twidth:75%;\n\ttext-align: center;\n\tmargin:3rem auto;\n}\n\n.comics {\n\n}\n\n.illustration {\n\t\n}"
 
 /***/ }),
 
 /***/ 520:
 /***/ (function(module, exports) {
 
-module.exports = ".gallery-container {\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n}\n.project-container {\n\tmargin: 1em;\n}\n.project-container h3 {\n\ttext-align:center;\n}\n.preview-container {\n\theight:350px;\n\twidth:300px;\n\tborder: 1px solid #666;\n\tpadding: 1em;\n}\n.preview-container:hover {\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}\n.description {\n\tcolor:#e26e26;\n\tpadding:1rem;\n\tposition:absolute;\n\theight: 325px;\n\twidth: 275px;\n\tbackground:rgba(256,256,256, 0.95);\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    text-align: left;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n}\n.description p {\n\ttext-align: left;\n}\n.selected {\n\tborder-color:#e26e26;\n}\n.view-button {\n\tcolor: #666;\n\tpadding: 1rem 3rem;\n\tborder: 1px solid #666;\n}\n.view-button:hover {\n\tcolor:#e26e26;\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}"
+module.exports = ".gallery-container {\n\tdisplay:-webkit-box;\n\tdisplay:-ms-flexbox;\n\tdisplay:flex;\n\t-ms-flex-wrap: wrap;\n\t    flex-wrap: wrap;\n\t-ms-flex-pack: distribute;\n\t    justify-content: space-around;\n}\n.project-container {\n\tmargin: 1em;\n}\n.project-container h3 {\n\ttext-align:center;\n}\n.preview-container {\n\theight:350px;\n\twidth:300px;\n\tborder: 1px solid #666;\n\tpadding: 1em;\n}\n.preview-container:hover {\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}\n.description {\n\tcolor:#e26e26;\n\tpadding:1rem;\n\tposition:absolute;\n\theight: 325px;\n\twidth: 275px;\n\tbackground:rgba(256,256,256, 0.95);\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    text-align: left;\n    -webkit-box-orient:vertical;\n    -webkit-box-direction:normal;\n        -ms-flex-direction:column;\n            flex-direction:column;\n}\n.description p {\n\ttext-align: left;\n}\n.selected {\n\tborder-color:#e26e26;\n}\n.view-button {\n\tcolor: #666;\n\tpadding: 1rem 3rem;\n\tborder: 1px solid #666;\n}\n.view-button:hover {\n\tcolor:#e26e26;\n\tborder-color:#e26e26;\n\tcursor: pointer;\n}"
 
 /***/ }),
 
@@ -640,7 +640,7 @@ module.exports = "\n\t<img\n\t\t[class.loading]=\"loading\"\n\t\t[alt]=\"altText
 /***/ 524:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"project\">\n\t<h2>{{project.name}}</h2>\n\t<div class=\"layout-container\">\n\t\t<div class=\"description-container\">\n\t\t\t<p>{{project.description}}</p>\n\t\t</div>\n\t\t<div class=\"artwork-container\" *ngFor=\"let artworkID of project.gallery\">\n\t\t\t<gallery-image \n\t\t\t\t[id]=\"artworkID\"\n\t\t\t\t[showCaption]=\"includeCaptions\"\n\t\t\t></gallery-image>\n\t\t\t\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div *ngIf=\"project\">\n\t<h2>{{project.name}}</h2>\n\t<div class=\"layout-container\">\n\t\t<div class=\"description-container\">\n\t\t\t<p>{{project.description}}</p>\n\t\t</div>\n\t\t<div \n\t\t\tclass=\"artwork-container\"\n\t\t\t[ngClass]=\"category\" \n\t\t\t*ngFor=\"let artworkID of project.gallery\">\n\t\t\t<gallery-image \n\t\t\t\t[id]=\"artworkID\"\n\t\t\t\t[showCaption]=\"includeCaptions\"\n\t\t\t></gallery-image>\t\n\t\t</div>\n\n\t</div>\n</div>"
 
 /***/ }),
 
