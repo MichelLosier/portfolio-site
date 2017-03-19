@@ -18,6 +18,32 @@ exports.categoryListAll = function (req, res, next) {
 //get project by id
 exports.queryID = function(req, res, next) {
 	Project.findOne({_id: req.params._id}, function(err, doc){
+		if(err) return console.error(err);
 		res.json(doc);
 	});
 };
+
+//create new project
+exports.createProject = function(req, res, next){
+	var _project = new Project(req.body);
+	_project.save(function(err, _project){
+		if(err) return console.error(err);
+		res.sendStatus(200).json(_project);
+	});
+}
+
+//update project
+exports.updateProject = function(req, res, next){
+	Project.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
+		if(err) return console.error(err);
+		res.sendStatus(200);
+	});
+}
+
+//delete project
+exports.deleteProject = function(req, res, next){
+	Project.findOneAndRemove({_id: req.params.id}, function(err){
+		if(err) return console.error(err);
+		res.sendStatus(200);
+	});
+}

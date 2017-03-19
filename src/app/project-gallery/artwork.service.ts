@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -12,6 +12,7 @@ import { Artwork } from './artwork';
 
 export class ArtworkService {
 	private headers = new Headers({'Content-Type': 'application/json'});
+	private options = new RequestOptions({headers: this.headers});
 	private artworkUrl = 'api/artwork/';
 
 	constructor(private http: Http) {}
@@ -28,6 +29,30 @@ export class ArtworkService {
 		const url = `${this.artworkUrl}/project/${projectID}`;
 		return this.http.get(url)
 			.map(response => response.json())
+			.catch(this.handleError);
+	}
+
+	//POST
+	createArtwork(artwork: Artwork): Observable <Response> {
+		const url = `${this.artworkUrl}`
+		return this.http.post(url, JSON.stringify(artwork), this.options)
+			.map(response => response.json() as Response)
+			.catch(this.handleError);
+	}
+
+	//PUT
+	updateArtwork(artworkID: string, artwork: Artwork): Observable <Response> {
+		const url = `${this.artworkUrl}id/${artworkID}`;
+		return this.http.put(url, artwork, this.options)
+			.map(response => response.json() as Response)
+			.catch(this.handleError);
+	}
+	
+	//DELETE
+	deleteArtwork(artworkID: string): Observable <Response> {
+		const url = `${this.artworkUrl}id/${artworkID}`;
+		return this.http.delete(url)
+			.map(response => response.json() as Response)
 			.catch(this.handleError);
 	}
 

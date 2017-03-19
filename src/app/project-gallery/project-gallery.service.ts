@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
@@ -12,10 +12,12 @@ import { Project } from './project';
 
 export class ProjectGalleryService {
 	private headers = new Headers({'Content-Type': 'application/json'});
+	private options = new RequestOptions({headers: this.headers});
 	private projectsUrl = 'api/projects/';
 
 	constructor(private http: Http) {}
 
+	//GETS
 	getAllProjects(): Observable<Project[]> {
 		return this.http.get(this.projectsUrl)
 				.map(response => response.json())
@@ -32,6 +34,30 @@ export class ProjectGalleryService {
 		const url = `${this.projectsUrl}id/${projectID}`;
 		return this.http.get(url)
 			.map(response => response.json() as Project)
+			.catch(this.handleError);
+	}
+
+	//POST
+	createProject(project: Project): Observable <Response> {
+		const url = `${this.projectsUrl}`
+		return this.http.post(url, JSON.stringify(project), this.options)
+			.map(response => response.json() as Response)
+			.catch(this.handleError);
+	}
+
+	//PUT
+	updateProject(projectID: string, project: Project): Observable <Response> {
+		const url = `${this.projectsUrl}id/${projectID}`;
+		return this.http.put(url, project, this.options)
+			.map(response => response.json() as Response)
+			.catch(this.handleError);
+	}
+
+	//DELETE
+	deleteProject(projectID: string): Observable <Response> {
+		const url = `${this.projectsUrl}id/${projectID}`;
+		return this.http.delete(url)
+			.map(response => response.json() as Response)
 			.catch(this.handleError);
 	}
 
