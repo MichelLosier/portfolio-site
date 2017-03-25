@@ -34,8 +34,10 @@ var ProjectGalleryService = (function () {
     function ProjectGalleryService(http) {
         this.http = http;
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: this.headers });
         this.projectsUrl = 'api/projects/';
     }
+    //GETS
     ProjectGalleryService.prototype.getAllProjects = function () {
         return this.http.get(this.projectsUrl)
             .map(function (response) { return response.json(); })
@@ -52,9 +54,30 @@ var ProjectGalleryService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    //POST
+    ProjectGalleryService.prototype.createProject = function (project) {
+        var url = "" + this.projectsUrl;
+        return this.http.post(url, JSON.stringify(project), this.options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    //PUT
+    ProjectGalleryService.prototype.updateProject = function (projectID, project) {
+        var url = this.projectsUrl + "id/" + projectID;
+        return this.http.put(url, project, this.options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    //DELETE
+    ProjectGalleryService.prototype.deleteProject = function (projectID) {
+        var url = this.projectsUrl + "id/" + projectID;
+        return this.http.delete(url)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     ProjectGalleryService.prototype.handleError = function (error) {
         var errMsg;
-        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Response */]) {
+        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Response */]) {
             var body = error.json() || '';
             var err = body.error || JSON.stringify(body);
             errMsg = error.status + " - " + (error.statusText || '') + " " + err;
@@ -67,7 +90,7 @@ var ProjectGalleryService = (function () {
     };
     ProjectGalleryService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === 'function' && _a) || Object])
     ], ProjectGalleryService);
     return ProjectGalleryService;
     var _a;
@@ -143,6 +166,7 @@ var ArtworkService = (function () {
     function ArtworkService(http) {
         this.http = http;
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: this.headers });
         this.artworkUrl = 'api/artwork/';
     }
     ArtworkService.prototype.getArtworkByID = function (artworkID) {
@@ -158,9 +182,30 @@ var ArtworkService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    //POST
+    ArtworkService.prototype.createArtwork = function (artwork) {
+        var url = "" + this.artworkUrl;
+        return this.http.post(url, JSON.stringify(artwork), this.options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    //PUT
+    ArtworkService.prototype.updateArtwork = function (artworkID, artwork) {
+        var url = this.artworkUrl + "id/" + artworkID;
+        return this.http.put(url, artwork, this.options)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    //DELETE
+    ArtworkService.prototype.deleteArtwork = function (artworkID) {
+        var url = this.artworkUrl + "id/" + artworkID;
+        return this.http.delete(url)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     ArtworkService.prototype.handleError = function (error) {
         var errMsg;
-        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Response */]) {
+        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Response */]) {
             var body = error.json() || '';
             var err = body.error || JSON.stringify(body);
             errMsg = error.status + " - " + (error.statusText || '') + " " + err;
@@ -173,7 +218,7 @@ var ArtworkService = (function () {
     };
     ArtworkService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === 'function' && _a) || Object])
     ], ArtworkService);
     return ArtworkService;
     var _a;

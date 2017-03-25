@@ -1,6 +1,6 @@
 export class Artwork {
 	projects: string[];
-	dateAdded: string;
+	dateAdded: Date;
 	location: string;
 	preview: string;
 	normal: string;
@@ -8,5 +8,4 @@ export class Artwork {
 	caption: string;
 	description: string;
 	altText: string;
-	}
 }

@@ -1,13 +1,11 @@
-import { Artwork } from './artwork';
-import { Observable } from 'rxjs/Observable';
 export class Project {
 	_id: string;
 	name: string;
 	position: number;
-	dateAdded: string;
+	dateAdded: Date;
 	description: string;
 	featuredImage: string;
 	category: string;
-	tags: string[];
+	tags?: string[];
 	gallery: string[];
 }
