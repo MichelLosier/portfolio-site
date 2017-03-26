@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
 	moduleId: module.id,
 	selector: 'project-form',
-	templateUrl: './project-form.html',
+	templateUrl: './project-form.component.html',
 	styleUrls: ['./form.css']
 })
 
