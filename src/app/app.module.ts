@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,7 @@ import { ProjectGallery } from './project-gallery/project-gallery.component';
 import { ProjectDetail } from './project-gallery/project-detail.component';
 import { GalleryImage } from './project-gallery/gallery-image.component';
 import { ProjectForm } from './forms/project-form.component';
+import { ManageProjects } from './forms/manage-projects.component';
 
 import { ProjectGalleryService } from './project-gallery/project-gallery.service'
 import { ArtworkService } from './project-gallery/artwork.service';
@@ -22,11 +23,12 @@ import { ArtworkService } from './project-gallery/artwork.service';
     ProjectGallery,
     ProjectDetail,
     GalleryImage,
-    ProjectForm
+    ProjectForm,
+    ManageProjects
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule
   ],

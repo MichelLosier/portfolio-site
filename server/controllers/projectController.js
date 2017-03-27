@@ -26,9 +26,9 @@ exports.queryID = function(req, res, next) {
 //create new project
 exports.createProject = function(req, res, next){
 	var _project = new Project(req.body);
-	_project.save(function(err, _project){
+	_project.save(function(err, project){
 		if(err) return console.error(err);
-		res.sendStatus(200).json(_project);
+		res.status(200).json(project);
 	});
 }
 
