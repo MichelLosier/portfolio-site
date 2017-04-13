@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../project-gallery/project';
 import { ProjectGalleryService } from '../project-gallery/project-gallery.service';
+import { ArtworkForm } from './artwork-form.component';
 
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -13,12 +14,16 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ProjectForm implements OnInit {
+	newArtwork = false;
+	existingArtwork = false;
+
 	projectForm = new FormGroup ({
 		name: new FormControl('', Validators.required),
 		description: new FormControl('', Validators.required),
 		featuredImage: new FormControl(''),
 		category: new FormControl('', Validators.required),
-		tags: new FormControl('')
+		tags: new FormControl(''),
+		gallery: new FormControl('')
 	});
 
 	constructor(
@@ -36,5 +41,11 @@ export class ProjectForm implements OnInit {
 				this.projectForm.reset();
 			}
 		);
+	}
+	addNewArtwork(): void {
+		this.newArtwork = true;
+	}
+	addExistingArtwork(): void {
+		this.existingArtwork = true;
 	}
 }
