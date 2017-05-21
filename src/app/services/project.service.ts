@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Project } from './project';
+import { Project } from '../models/project';
 
 @Injectable()
 

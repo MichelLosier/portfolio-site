@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Project } from './project';
-import { GalleryImage } from './gallery-image.component'
+import { Project } from '../../models/project';
+import { GalleryImage } from '../gallery-image/gallery-image.component'
 
 @Component({
 	moduleId: module.id,
@@ -11,9 +11,7 @@ import { GalleryImage } from './gallery-image.component'
 
 export class ProjectCard {
 	@Input() selected: boolean //received state from controlling component
-	@Input() project: Project
-	
+	@Input() project: Project	
 	constructor (){}
-
 
 }

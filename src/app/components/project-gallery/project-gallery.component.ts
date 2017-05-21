@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from './project';
-import { ProjectCard }	from './project-card.component';
+import { Project } from '../../models/project';
+import { ProjectCard }	from '../project-card/project-card.component';
 
-import { ProjectGalleryService } from './project-gallery.service';
+import { ProjectGalleryService } from '../../services/project.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
@@ -24,7 +24,6 @@ export class ProjectGallery implements OnInit {
 		private projectGalleryService: ProjectGalleryService,
 		private route: ActivatedRoute ) {
 		}
-
 	ngOnInit(): void {
 		this.category = this.route.routeConfig.path;
 		this.getProjects(this.category);

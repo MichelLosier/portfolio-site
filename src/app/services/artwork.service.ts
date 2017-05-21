@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
-import { Artwork } from './artwork';
+import { Artwork } from '../models/artwork';
 
 @Injectable()
 

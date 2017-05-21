@@ -1,11 +1,11 @@
-.container {
+:host {
 	margin: 1em;
-	height:350px;
 	width:300px;
+	height:400px;
 	border: 1px solid #666;
 	padding: 1em;
 }
-.container:hover {
+:host:hover {
 	border-color:#e26e26;
 	cursor: pointer;
 }
@@ -16,12 +16,15 @@
 h3 {
 	text-align:center;
 }
+
+gallery-image {
+	height: 325px;
+}
 .description {
 	color:#e26e26;
-	padding:1rem;
 	position:absolute;
+	width: 300px;
 	height: 325px;
-	width: 275px;
 	background:rgba(256,256,256, 0.95);
 	display: flex;
     align-items: center;

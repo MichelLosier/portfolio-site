@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AboutComponent } from './about/about.component';
-import { ProjectGallery } from './project-gallery/project-gallery.component';
-import { ProjectDetail } from './project-gallery/project-detail.component'
-import { ManageProjects } from './forms/manage-projects.component';
+import { AboutComponent } from './components/about/about.component';
+import { ProjectGallery } from './components/project-gallery/project-gallery.component';
+import { ProjectDetail } from './components/project-detail/project-detail.component'
+import { ManageProjects } from './components/forms/manage-projects.component';
 const ROUTES: Routes = [
 	{
 		path: 'about',

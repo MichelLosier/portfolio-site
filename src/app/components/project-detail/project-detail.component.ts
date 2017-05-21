@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Project } from './project';
-import { Artwork } from './artwork';
-import { GalleryImage } from './gallery-image.component';
+import { Project } from '../../models/project';
+import { Artwork } from '../../models/artwork';
+import { GalleryImage } from '../gallery-image/gallery-image.component';
 
-import { ProjectGalleryService } from './project-gallery.service';
+import { ProjectGalleryService } from '../../services/project.service';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'

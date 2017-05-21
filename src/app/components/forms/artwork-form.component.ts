@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Artwork } from '../project-gallery/artwork';
-import { ArtworkService } from '../project-gallery/artwork.service';
+import { Artwork } from '../../models/artwork';
+import { ArtworkService } from '../../services/artwork.service';
 import { ProjectGallery	} from '../project-gallery/project-gallery.component';
 
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';

@@ -1,4 +1,4 @@
-<div class="card-container">
+
 	<h3>{{project.name}}</h3>
 	<div
 	*ngIf="selected === true"
@@ -8,5 +8,7 @@
 		[routerLink]="['/project', project._id]"
 		>view</div>
 	</div>
+	<gallery-image
+	[artwork]="project.featuredImage">
+	</gallery-image>
 
-</div>
