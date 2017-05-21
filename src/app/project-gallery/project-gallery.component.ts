@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from './project';
-import { GalleryImage } from './gallery-image.component';
+import { ProjectCard }	from './project-card.component';
 
 import { ProjectGalleryService } from './project-gallery.service';
 

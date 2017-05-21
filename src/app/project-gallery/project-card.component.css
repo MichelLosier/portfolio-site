@@ -1,0 +1,44 @@
+.container {
+	margin: 1em;
+	height:350px;
+	width:300px;
+	border: 1px solid #666;
+	padding: 1em;
+}
+.container:hover {
+	border-color:#e26e26;
+	cursor: pointer;
+}
+.selected {
+	border-color:#e26e26;
+}
+
+h3 {
+	text-align:center;
+}
+.description {
+	color:#e26e26;
+	padding:1rem;
+	position:absolute;
+	height: 325px;
+	width: 275px;
+	background:rgba(256,256,256, 0.95);
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: left;
+    flex-direction:column;
+}
+.description p {
+	text-align: left;
+}
+.view-button {
+	color: #666;
+	padding: 1rem 3rem;
+	border: 1px solid #666;
+}
+.view-button:hover {
+	color:#e26e26;
+	border-color:#e26e26;
+	cursor: pointer;
+}

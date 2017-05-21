@@ -1,24 +1,10 @@
 <h2>{{category}}</h2>
 <div class="gallery-container">
-	<div class="project-container" *ngFor="let project of projects">
-		<h3>{{project.name}}</h3>
-		<div 
+	<project-card 
+		*ngFor="let project of projects"
 		(click)="selectProject(project)"
-		[class.selected]="selectedProject == project"
-		class="preview-container">
-			<div 
-			*ngIf="selectedProject == project"
-			class="description">
-					<p>{{project.description}}</p>
-
-					<div class="view-button"
-						[routerLink]="['/project', project._id]"
-					>view</div>
-			</div>
-			<gallery-image 
-				[id]='project.featuredImage'>
-			</gallery-image>
-
-		</div>
-	</div>
+		[project] = "project"
+		[selected]="selectedProject == project"
+		>
+	</project-card>
 </div>

@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectGallery } from './project-gallery/project-gallery.component';
+import { ProjectCard } from './project-gallery/project-card.component'
 import { ProjectDetail } from './project-gallery/project-detail.component';
 import { GalleryImage } from './project-gallery/gallery-image.component';
 import { ProjectForm } from './forms/project-form.component';
@@ -22,6 +23,7 @@ import { ArtworkService } from './project-gallery/artwork.service';
     AppComponent,
     AboutComponent,
     ProjectGallery,
+    ProjectCard,
     ProjectDetail,
     GalleryImage,
     ProjectForm,

@@ -1,0 +1,12 @@
+<div class="card-container">
+	<h3>{{project.name}}</h3>
+	<div
+	*ngIf="selected === true"
+	class="description">
+		<p>{{project.description}}</p>
+		<div class="view-button"
+		[routerLink]="['/project', project._id]"
+		>view</div>
+	</div>
+
+</div>
