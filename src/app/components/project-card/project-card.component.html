@@ -8,7 +8,11 @@
 		[routerLink]="['/project', project._id]"
 		>view</div>
 	</div>
-	<gallery-image
-	[artwork]="project.featuredImage">
+
+	<gallery-image 
+	[path]="project.featuredImage.location" 
+	[fileName]="project.featuredImage.normal"
+	[altText]="project.featuredImage.altText">
 	</gallery-image>
+
 

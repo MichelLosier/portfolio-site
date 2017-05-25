@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Project } from '../../models/project';
 import { Artwork } from '../../models/artwork';
-import { GalleryImage } from '../gallery-image/gallery-image.component';
+import { ArtworkCard } from '../artwork-card/artwork-card.component'
 
 import { ProjectGalleryService } from '../../services/project.service';
 

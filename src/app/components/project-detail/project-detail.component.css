@@ -9,16 +9,16 @@ h2 {
 	width: 50%;
 
 }
-.artwork-container {
-	width:75%;
-	text-align: center;
-	margin:3rem auto;
-}
 
 .comics {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 
 }
 
 .illustration {
-	
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
