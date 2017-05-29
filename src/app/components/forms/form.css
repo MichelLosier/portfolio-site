@@ -1,0 +1,21 @@
+form {
+
+}
+.form-group {
+	padding:.5em 0;
+}
+label, button {
+	display:block;
+	color: #e26e26;
+	font-size: 1em;
+}
+label {
+	padding:.25em 0;
+}
+input {
+	border:1px solid #666;
+}
+button {
+	border-radius:20% solid #e26e26;
+	background-color: white;
+}
