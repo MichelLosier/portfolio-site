@@ -3,7 +3,7 @@ import { Project } from '../../models/project';
 import { ProjectGalleryService } from '../../services/project.service';
 import { ArtworkForm } from './artwork-form.component';
 
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -16,20 +16,23 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectForm implements OnInit {
 	newArtwork = false;
 	existingArtwork = false;
+	projectForm: FormGroup;
 
-	projectForm = new FormGroup ({
-		name: new FormControl('', Validators.required),
-		description: new FormControl('', Validators.required),
-		featuredImage: new FormControl(''),
-		category: new FormControl('', Validators.required),
-		tags: new FormControl(''),
-		gallery: new FormControl('')
-	});
+	createForm() {
+		this.projectForm = this.formBuilder.group({
+			name:['', Validators.required],
+			description: ['', Validators.required],
+			category: ['', Validators.required],
+			tags: ['']
+		})
+	}
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
 		private formBuilder: FormBuilder
-		){}
+		){
+		this.createForm();
+	}
 
 	ngOnInit(): void {
 
