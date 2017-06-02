@@ -13,21 +13,29 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 
 export class ArtworkForm implements OnInit {
-	artworkForm = new  FormGroup ({
-		projects: new FormControl(''), //selection not text Project name list // if in context of project form
-		location: new FormControl('', Validators.required),
-		preview: new FormControl(''),
-		normal: new FormControl('', Validators.required),
-		large: new FormControl(''),
-		caption: new FormControl('', Validators.required),
-		description: new FormControl('', Validators.required),
-		altText: new FormControl('', Validators.required)
-	});
+	artworkForm: FormGroup;
+	//output emit submission id
 
 	constructor(
 		private artworkService: ArtworkService,
 		private formBuilder: FormBuilder
-	){}
+	){
+		this.createForm();
+	}
+
+	createForm(){
+		this.artworkForm = this.formBuilder.group({
+			projects: ['', Validators.required],
+			location: ['', Validators.required],
+			preview: ['', Validators.required],
+			normal: ['', Validators.required],
+			large: ['', Validators.required],
+			caption: ['', Validators.required],
+			description: ['', Validators.required],
+			altText: ['', Validators.required]
+		})
+	}
+
 
 	ngOnInit(): void {
 

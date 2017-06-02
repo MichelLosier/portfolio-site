@@ -2,51 +2,61 @@
 	[formGroup]="artworkForm"
 	(ngSubmit)="onSubmit()" novalidate>
 	<div class="form-group">
-		<label for="projects">Associated Projects</label>
+		<label for="projects">Associated Projects:
 		<input type="text" class="form-control"
 			formControlName="projects"
 			name="projects">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="location">Directory Location</label>
+		<label for="location">Directory Location:
 		<input type="text" class="form-control"
 			formControlName="location"
 			name="location">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="preview">Preview Image Filename</label>
+		<label for="preview">Preview Image Filename:
 		<input type="text" class="form-control"
 			formControlName="preview"
 			name="preview">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="normal">Normal Image Filename</label>
+		<label for="normal">Normal Image Filename:
 		<input type="text" class="form-control"
 			formControlName="normal"
 			name="normal">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="large">Large Image Filename</label>
+		<label for="large">Large Image Filename:
 		<input type="text" class="form-control"
 			formControlName="large"
 			name="large">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="caption">Caption (appears below Artwork Image)</label>
+		<label for="caption">Caption (appears below Artwork Image):
 		<input type="text" class="form-control"
 			formControlName="caption"
 			name="caption">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="description">Long Description of Artwork</label>
+		<label for="description">Long Description of Artwork:
 		<input type="text" class="form-control"
 			formControlName="description"
 			name="description">
+		</label>
 	</div>
 	<div class="form-group">
-		<label for="altText">Alt-text</label>
+		<label for="altText">Alt-text:
 		<input type="text" class="form-control"
 			formControlName="altText"
 			name="altText">
+		</label>
 	</div>
+	<button (click)="onSubmit()" type="button">Submit New Artwork</button>
+
 </form>					

@@ -23,7 +23,8 @@ export class ProjectForm implements OnInit {
 			name:['', Validators.required],
 			description: ['', Validators.required],
 			category: ['', Validators.required],
-			tags: ['']
+			tags: this.formBuilder.array([]),
+			gallery: this.formBuilder.array([])
 		})
 	}
 
@@ -35,7 +36,7 @@ export class ProjectForm implements OnInit {
 	}
 
 	ngOnInit(): void {
-
+		
 	}
 	onSubmit(): void {
 		this.projectGalleryService.createProject(this.projectForm.value).subscribe(
