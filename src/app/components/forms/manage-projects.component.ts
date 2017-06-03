@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProjectForm } from  './project-form.component';
+import { Project } from '../../models/project';
+import { Artwork } from '../../models/artwork';
 
 @Component({
 	moduleId: module.id,
 	selector: 'manage-projects',
-	template: `<project-form></project-form>`
+	templateUrl: './manage-projects.component.html'
 })
 
-export class ManageProjects {
+export class ManageProjects implements OnInit{
+	selectedProject: Project;
+	selectedArtwork: Artwork;
 	
+	constructor(){
+
+	}
+	ngOnInit(): void {
+	}
 }

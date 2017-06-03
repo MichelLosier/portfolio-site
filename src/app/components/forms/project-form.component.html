@@ -24,11 +24,13 @@
 		</label>
 	</div>
 	<div class="form-group">
-		<label for="tags">Tags:
+		<label for="addTag">Add Tag:
 		<input type="text" class="form-control" 
-			formControlName="tags"
-			name="tags">
+			formControlName="addTag"
+			name="addTag">
 		</label>
+		<button class="inline" type="button" (click)="addTag()">Add</button>
+		<p>{{tags}}</p>
 	</div>
 
 	<div class="form-group">
@@ -48,5 +50,5 @@
 	<button type="submit">Submit New Project</button>
 </form>
 
-<!--<p>Form value: {{ projectForm.value | json }}</p>
-<p>Form status: {{ projectForm.status | json }}</p>-->
+<p>Form value: {{ projectForm.value | json }}</p>
+<p>Form status: {{ projectForm.status | json }}</p>

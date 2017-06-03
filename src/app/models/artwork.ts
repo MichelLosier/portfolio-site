@@ -1,4 +1,4 @@
-export class Artwork {
+export interface Artwork {
 	projects: string[];
 	dateAdded: Date;
 	location: string;

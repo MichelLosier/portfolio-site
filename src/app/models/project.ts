@@ -1,11 +1,11 @@
-export class Project {
-	_id: string;
+export interface Project {
+	_id?: string;
 	name: string;
-	position: number;
-	dateAdded: Date;
+	position?: number;
+	dateAdded?: Date;
 	description: string;
 	featuredImage: string;
 	category: string;
-	tags?: string[];
+	tags?: string[]
 	gallery: string[];
 }
