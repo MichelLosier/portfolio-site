@@ -14,6 +14,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 export class ArtworkForm implements OnInit {
 	artworkForm: FormGroup;
+	private projects: string[];
+
 	//output emit submission id
 
 	constructor(
@@ -40,9 +42,15 @@ export class ArtworkForm implements OnInit {
 	ngOnInit(): void {
 
 	}
+
+	private prepareSaveArtwork(): Artwork {
+		const formModel = this.artworkForm.value;
+		return formModel;
+	}
 	//need value transforming function to parse location? this data structure assumes same location root for all images associated
 	onSubmit(): void {
-		this.artworkService.createArtwork(this.artworkForm.value).subscribe(
+		const artwork = this.prepareSaveArtwork();
+		this.artworkService.createArtwork(artwork).subscribe(
 			res => {
 				console.log(res);
 				this.artworkForm.reset();

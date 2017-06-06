@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../models/project';
+import { Artwork } from '../../models/artwork';
 import { ProjectGalleryService } from '../../services/project.service';
 import { ArtworkForm } from './artwork-form.component';
+
+import { ProjectCard } from '../project-card/project-card.component';
 
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +20,9 @@ export class ProjectForm implements OnInit {
 	newArtwork = false;
 	projectForm: FormGroup;
 	@Input() project: Project;
-	
+	@Input() addArtwork: Artwork;
+
+
 	private tags: string[] = []
 	private gallery: string[] = []
 	private featuredImage: string;
@@ -57,6 +62,8 @@ export class ProjectForm implements OnInit {
 	addExistingArtwork(): void {
 		this.newArtwork = false;
 	}
+
+	
 	private prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
 		const saveProject: Project = {
