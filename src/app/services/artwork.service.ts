@@ -33,18 +33,18 @@ export class ArtworkService {
 	}
 
 	//POST
-	createArtwork(artwork: Artwork): Observable <Response> {
+	createArtwork(artwork: Artwork): Observable <Artwork> {
 		const url = `${this.artworkUrl}`
 		return this.http.post(url, JSON.stringify(artwork), this.options)
-			.map(response => response.json() as Response)
+			.map(response => response.json() as Artwork)
 			.catch(this.handleError);
 	}
 
 	//PUT
-	updateArtwork(artworkID: string, artwork: Artwork): Observable <Response> {
+	updateArtwork(artworkID: string, artwork: Artwork): Observable <Artwork> {
 		const url = `${this.artworkUrl}id/${artworkID}`;
 		return this.http.put(url, artwork, this.options)
-			.map(response => response.json() as Response)
+			.map(response => response.json() as Artwork)
 			.catch(this.handleError);
 	}
 	

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Project } from '../../models/project';
 import { Artwork } from '../../models/artwork';
 import { ProjectGalleryService } from '../../services/project.service';
@@ -44,7 +44,7 @@ export class ProjectForm implements OnInit {
 			category: ['', Validators.required],
 			addTag:'',
 			gallery: this.formBuilder.array([])
-		})
+		});
 	}
 	
 	//tags
@@ -63,7 +63,7 @@ export class ProjectForm implements OnInit {
 		this.newArtwork = false;
 	}
 
-	
+
 	private prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
 		const saveProject: Project = {

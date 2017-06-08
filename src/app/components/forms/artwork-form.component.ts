@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Artwork } from '../../models/artwork';
+import { Project } from '../../models/project';
 import { ArtworkService } from '../../services/artwork.service';
 import { ProjectGallery	} from '../project-gallery/project-gallery.component';
 
@@ -14,9 +15,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 
 export class ArtworkForm implements OnInit {
 	artworkForm: FormGroup;
+	@Input() addProject: Project;
 	private projects: string[];
 
-	//output emit submission id
+	//output artwork
+	artworkSubmission
+
 
 	constructor(
 		private artworkService: ArtworkService,
@@ -45,6 +49,10 @@ export class ArtworkForm implements OnInit {
 
 	private prepareSaveArtwork(): Artwork {
 		const formModel = this.artworkForm.value;
+		const saveArtwork: any = {
+
+
+		} //object.assign?
 		return formModel;
 	}
 	//need value transforming function to parse location? this data structure assumes same location root for all images associated
@@ -54,6 +62,7 @@ export class ArtworkForm implements OnInit {
 			res => {
 				console.log(res);
 				this.artworkForm.reset();
+				this.artworkSubmission.emit(res);
 			}
 		);
 	}
