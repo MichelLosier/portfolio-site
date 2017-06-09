@@ -17,6 +17,7 @@ import { ManageProjects } from './components/forms/manage-projects.component';
 
 import { ProjectGalleryService } from './services/project.service'
 import { ArtworkService } from './services/artwork.service';
+import { ProjectArtworkFormService } from './services/project-artwork-form.service';
 
 import { GalleryImage } from  './components/gallery-image/gallery-image.component'
 @NgModule({
@@ -38,7 +39,7 @@ import { GalleryImage } from  './components/gallery-image/gallery-image.componen
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ ProjectGalleryService, ArtworkService ],
+  providers: [ ProjectGalleryService, ArtworkService, ProjectArtworkFormService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

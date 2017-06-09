@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Project } from '../../models/project';
 import { Artwork } from '../../models/artwork';
+
 import { ProjectGalleryService } from '../../services/project.service';
+import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';
 import { ArtworkForm } from './artwork-form.component';
 
 import { ProjectCard } from '../project-card/project-card.component';
@@ -29,7 +31,8 @@ export class ProjectForm implements OnInit {
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private formService: ProjectArtworkFormService
 		){
 		this.createForm();
 	}
@@ -84,6 +87,7 @@ export class ProjectForm implements OnInit {
 			res => {
 				console.log(res);
 				this.projectForm.reset();
+				this.formService.announceProjectSubmission(res);
 			}
 		);
 	}
