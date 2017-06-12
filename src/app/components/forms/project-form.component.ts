@@ -25,8 +25,8 @@ export class ProjectForm implements OnInit {
 	@Input() addArtwork: Artwork;
 
 
-	private tags: string[] = []
-	private gallery: string[] = []
+	private tags: string[] = [];
+	private gallery: Artwork[] = [];
 	private featuredImage: string;
 
 	constructor(
@@ -35,6 +35,10 @@ export class ProjectForm implements OnInit {
 		private formService: ProjectArtworkFormService
 		){
 		this.createForm();
+		this.formService.submittedArtwork$.subscribe( res => {
+			this.gallery.push(res);
+			this.newArtwork = false;
+		});
 	}
 
 	ngOnInit(): void {
@@ -45,8 +49,7 @@ export class ProjectForm implements OnInit {
 			name:['', Validators.required],
 			description: ['', Validators.required],
 			category: ['', Validators.required],
-			addTag:'',
-			gallery: this.formBuilder.array([])
+			addTag:''
 		});
 	}
 	
@@ -69,13 +72,16 @@ export class ProjectForm implements OnInit {
 
 	private prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
+		const galleryReduce = this.gallery.map((artwork) => {
+				return artwork._id;
+			});
 		const saveProject: Project = {
 			name: formModel.name,
 			description: formModel.description,
 			category: formModel.category,
-			featuredImage:  this.featuredImage,
+			featuredImage:  this.featuredImage || galleryReduce[0],
 			tags: this.tags,
-			gallery: this.gallery
+			gallery: galleryReduce
 		}
 		return saveProject;
 	}

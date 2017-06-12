@@ -41,7 +41,7 @@ export class ProjectGalleryService {
 	createProject(project: Project): Observable <Project> {
 		const url = `${this.projectsUrl}`
 		return this.http.post(url, JSON.stringify(project), this.options)
-			.map(response => response.json() as Project)
+			.map(response => response.json())
 			.catch(this.handleError);
 	}
 

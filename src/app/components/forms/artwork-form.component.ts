@@ -1,8 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Artwork } from '../../models/artwork';
 import { Project } from '../../models/project';
-import { ArtworkService } from '../../services/artwork.service';
+
 import { ProjectGallery	} from '../project-gallery/project-gallery.component';
+
+import { ArtworkService } from '../../services/artwork.service';
+import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';
 
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -18,13 +21,12 @@ export class ArtworkForm implements OnInit {
 	@Input() addProject: Project;
 	private projects: string[];
 
-	//output artwork
-	artworkSubmission
 
 
 	constructor(
 		private artworkService: ArtworkService,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private formService: ProjectArtworkFormService
 	){
 		this.createForm();
 	}
@@ -62,7 +64,7 @@ export class ArtworkForm implements OnInit {
 			res => {
 				console.log(res);
 				this.artworkForm.reset();
-				this.artworkSubmission.emit(res);
+				this.formService.announceArtworkSubmission(res);
 			}
 		);
 	}

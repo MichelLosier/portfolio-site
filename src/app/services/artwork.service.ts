@@ -36,7 +36,7 @@ export class ArtworkService {
 	createArtwork(artwork: Artwork): Observable <Artwork> {
 		const url = `${this.artworkUrl}`
 		return this.http.post(url, JSON.stringify(artwork), this.options)
-			.map(response => response.json() as Artwork)
+			.map(response => response.json())
 			.catch(this.handleError);
 	}
 

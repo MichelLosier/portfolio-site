@@ -17,17 +17,17 @@ exports.queryID = function(req, res, next) {
 //create new artwork
 exports.createArtwork = function(req, res, next){
 	var _artwork = new Artwork(req.body);
-	_artwork.save(function(err, _artwork){
+	_artwork.save(function(err, artwork){
 		if(err) return console.error(err);
-		res.sendStatus(200).json(_artwork);
+		res.status(200).json(artwork);
 	});
 }
 
 //update artwork
 exports.updateArtwork = function(req, res, next){
-	Artwork.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
+	Artwork.findOneAndUpdate({_id: req.params.id}, req.body, function(err, artwork) {
 		if(err) return console.error(err);
-		res.sendStatus(200);
+		res.status(200).json(artwork);
 	});
 }
 
@@ -35,6 +35,6 @@ exports.updateArtwork = function(req, res, next){
 exports.deleteArtwork = function(req, res, next){
 	Artwork.findOneAndRemove({_id: req.params.id}, function(err){
 		if(err) return console.error(err);
-		res.sendStatus(200);
+		res.status(200);
 	});
 }

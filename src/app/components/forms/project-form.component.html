@@ -32,15 +32,19 @@
 		<button class="inline" type="button" (click)="addTag()">Add</button>
 		<p>{{tags}}</p>
 	</div>
-
+	<div>
+		<artwork-card
+		*ngFor="let artwork of gallery"
+		[artwork]=artwork>
+		</artwork-card>
+	</div>
 	<div class="form-group">
 		<button type="button"
 		(click)="addNewArtwork()"
 		>Add New Artwork</button>
 
 		<artwork-form
-		*ngIf="newArtwork"
-		>
+		*ngIf="newArtwork">
 		</artwork-form>
 
 		<button type="button"
@@ -54,3 +58,4 @@
 
 <p>Form value: {{ projectForm.value | json }}</p>
 <p>Form status: {{ projectForm.status | json }}</p>
+<p>Gallery value: {{ gallery | json }}</p>

@@ -1,4 +1,5 @@
 export interface Artwork {
+	_id?: any;
 	projects: string[];
 	dateAdded: Date;
 	location: string;

@@ -42,7 +42,7 @@ exports.createProject = function(req, res, next){
 exports.updateProject = function(req, res, next){
 	Project.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
 		if(err) return console.error(err);
-		res.sendStatus(200);
+		res.status(200);
 	});
 }
 
