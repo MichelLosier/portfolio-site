@@ -20,7 +20,6 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ProjectForm {
-	newArtwork = false;
 	projectForm: FormGroup;
 
 	@Input() project: Project;
@@ -39,7 +38,7 @@ export class ProjectForm {
 		this.createForm();
 		this.formService.submittedArtwork$.subscribe( res => {
 			this.gallery.push(res);
-			this.newArtwork = false;
+			this.formService.announceNewArtwork(false);
 		});
 	}
 
@@ -61,11 +60,11 @@ export class ProjectForm {
 
 	//gallery functions
 	addNewArtwork(): void {
-		this.newArtwork = true;
+		this.formService.announceNewArtwork(true);
 	}
 	
 	addExistingArtwork(): void {
-		this.newArtwork = false;
+		this.formService.announceNewArtwork(false);
 	}
 
 

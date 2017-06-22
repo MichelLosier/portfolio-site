@@ -13,13 +13,18 @@ export class ProjectArtworkFormService {
 	private selectedProject = new Subject<Project>();
 	private submittedProject = new Subject<Project>();
 
+	private newArtwork = new Subject<boolean>();
+	private selectedArtwork = new Subject<Artwork>();
 	private submittedArtwork = new Subject<Artwork>();
 
 	//streams source.asObservable()
 	selectedProject$ = this.selectedProject.asObservable();
 	submittedProject$ = this.submittedProject.asObservable();
 
+	newArtwork$ = this.newArtwork.asObservable();
+	selectedArtwork$ = this.selectedArtwork.asObservable();
 	submittedArtwork$ = this.submittedArtwork.asObservable();
+
 
 	//event commands source.next()
 	announceSelectedProject(project: Project){
@@ -28,6 +33,10 @@ export class ProjectArtworkFormService {
 
 	announceProjectSubmission(project: Project){
 		this.submittedProject.next(project);
+	}
+
+	announceNewArtwork(bool: boolean){
+		this.newArtwork.next(bool);
 	}
 
 	announceArtworkSubmission(artwork: Artwork){
