@@ -14,8 +14,8 @@ router.get('/projects/category/:cat', projectCtrl.categoryListAll);
 //post projects
 router.post('/projects', projectCtrl.createProject);
 
-//push projects
-router.put('/projects/id/:_id', projectCtrl.updateProject);
+//patch projects
+router.patch('/projects/id/:_id', projectCtrl.updateProject);
 
 //delete projects
 router.delete('/projects/id/:_id', projectCtrl.deleteProject);
@@ -30,8 +30,11 @@ router.get('/artwork/project/:_id', artworkCtrl.queryByProject);
 //post artwork
 router.post('/artwork', artworkCtrl.createArtwork);
 
-//push artwork
-router.put('/artwork/id/:_id', artworkCtrl.updateArtwork);
+//patch many artwork
+router.patch('/artwork', artworkCtrl.updateArtworks);
+
+//patch artwork
+router.patch('/artwork/id/:_id', artworkCtrl.updateArtwork);
 
 //delete artwork
 router.delete('/projects/id/:_id', artworkCtrl.deleteArtwork);

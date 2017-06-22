@@ -40,11 +40,19 @@ export class ArtworkService {
 			.catch(this.handleError);
 	}
 
-	//PUT
+	//PATCH
 	updateArtwork(artworkID: string, artwork: Artwork): Observable <Artwork> {
 		const url = `${this.artworkUrl}id/${artworkID}`;
-		return this.http.put(url, artwork, this.options)
+		return this.http.patch(url, JSON.stringify(artwork), this.options)
 			.map(response => response.json() as Artwork)
+			.catch(this.handleError);
+	}
+
+	//PATCH MANY
+	updateArtworks(update: {}): Observable<Artwork[]> {
+		const url = `${this.artworkUrl}`
+		return this.http.patch(url, update, this.options)
+			.map(response =>  response.json() as Artwork[])
 			.catch(this.handleError);
 	}
 	

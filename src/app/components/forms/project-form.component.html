@@ -3,36 +3,33 @@
 	[formGroup]="projectForm" 
 	(ngSubmit)="onSubmit()" novalidate>
 	<div class="form-group">
-		<label for="name">Name:
+		<label for="name">Name:</label>
 		<input type="text" class="form-control" 
 			formControlName="name"
 			name="name">
-		</label>
 	</div>
 	<div class="form-group">
-		<label for="description">Description:
+		<label for="description">Description:</label>
 		<input type="text" class="form-control"
 			formControlName="description"
 			name="description">
-		</label>
 	</div>
 	<div class="form-group">
-		<label for="category">Category:
+		<label for="category">Category:</label>
 		<input type="text" class="form-control"
 			formControlName="category"
 			name="category">
-		</label>
 	</div>
 	<div class="form-group">
-		<label for="addTag">Add Tag:
+		<label for="addTag">Add Tag:</label>
 		<input type="text" class="form-control" 
 			formControlName="addTag"
 			name="addTag">
-		</label>
 		<button class="inline" type="button" (click)="addTag()">Add</button>
 		<p>{{tags}}</p>
 	</div>
 	<div>
+		<label>Gallery:</label>
 		<artwork-card
 		*ngFor="let artwork of gallery"
 		[artwork]=artwork>

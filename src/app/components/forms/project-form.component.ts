@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Project } from '../../models/project';
 import { Artwork } from '../../models/artwork';
 
 import { ProjectGalleryService } from '../../services/project.service';
+import { ArtworkService } from '../../services/artwork.service';
 import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';
 import { ArtworkForm } from './artwork-form.component';
 
@@ -18,11 +19,11 @@ import { Observable } from 'rxjs/Observable';
 	styleUrls: ['./form.css']
 })
 
-export class ProjectForm implements OnInit {
+export class ProjectForm {
 	newArtwork = false;
 	projectForm: FormGroup;
+
 	@Input() project: Project;
-	@Input() addArtwork: Artwork;
 
 
 	private tags: string[] = [];
@@ -31,6 +32,7 @@ export class ProjectForm implements OnInit {
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
+		private artworkService: ArtworkService,
 		private formBuilder: FormBuilder,
 		private formService: ProjectArtworkFormService
 		){
@@ -39,9 +41,6 @@ export class ProjectForm implements OnInit {
 			this.gallery.push(res);
 			this.newArtwork = false;
 		});
-	}
-
-	ngOnInit(): void {
 	}
 
 	private createForm() {
@@ -70,7 +69,7 @@ export class ProjectForm implements OnInit {
 	}
 
 
-	private prepareSaveProject(): Project {
+	prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
 		const galleryReduce = this.gallery.map((artwork) => {
 				return artwork._id;
@@ -86,6 +85,20 @@ export class ProjectForm implements OnInit {
 		return saveProject;
 	}
 
+	updateArtworkWithProject(projectId: string, artworks: string[]) {
+		let update = {
+			artworks: artworks, // array of artwork _id to query
+			keys: { //keys to update
+				$push: {projects: projectId} //push is mongodb operator
+			}
+		}
+		this.artworkService.updateArtworks(update).subscribe(
+			res => {
+				console.log(`artworks updated with project id: ${res}`);
+			}
+		);
+	}
+
 	//submission
 	onSubmit(): void {
 		const project = this.prepareSaveProject();
@@ -94,6 +107,8 @@ export class ProjectForm implements OnInit {
 				console.log(res);
 				this.projectForm.reset();
 				this.formService.announceProjectSubmission(res);
+				this.updateArtworkWithProject(res._id, project.gallery);
+				this.gallery = [];
 			}
 		);
 	}

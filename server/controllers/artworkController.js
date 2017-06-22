@@ -31,6 +31,14 @@ exports.updateArtwork = function(req, res, next){
 	});
 }
 
+//update multiple artworks by _id set
+exports.updateArtworks = function(req, res, next){ //TODO review params)
+	Artwork.updateMany({_id: {$in: req.body.artworks}}, req.body.keys, function(err, artworks){
+		if(err) return console.error(err);
+		res.status(200).json(artworks);
+	});
+}
+
 //delete artwork
 exports.deleteArtwork = function(req, res, next){
 	Artwork.findOneAndRemove({_id: req.params.id}, function(err){

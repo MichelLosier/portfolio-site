@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Artwork } from '../../models/artwork';
 import { Project } from '../../models/project';
 
@@ -16,11 +16,9 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 	styleUrls: ['./form.css']
 })
 
-export class ArtworkForm implements OnInit {
+export class ArtworkForm {
 	artworkForm: FormGroup;
-	@Input() addProject: Project;
-	private projects: string[];
-
+	submittedProject: Project;
 
 
 	constructor(
@@ -44,11 +42,6 @@ export class ArtworkForm implements OnInit {
 		})
 	}
 
-
-	ngOnInit(): void {
-
-	}
-
 	private prepareSaveArtwork(): Artwork {
 		const formModel = this.artworkForm.value;
 		const saveArtwork: any = {
@@ -68,5 +61,7 @@ export class ArtworkForm implements OnInit {
 			}
 		);
 	}
+
+
 
 }
