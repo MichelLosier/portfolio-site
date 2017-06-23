@@ -14,6 +14,7 @@ import { ProjectDetail } from './components/project-detail/project-detail.compon
 import { ProjectForm } from './components/forms/project-form.component';
 import { ArtworkForm } from './components/forms/artwork-form.component';
 import { ManageProjects } from './components/forms/manage-projects.component';
+import { ListSelection } from './components/list-selection/list-selection.component';
 
 import { ProjectGalleryService } from './services/project.service'
 import { ArtworkService } from './services/artwork.service';
@@ -31,7 +32,8 @@ import { GalleryImage } from  './components/gallery-image/gallery-image.componen
     GalleryImage,
     ProjectForm,
     ArtworkForm,
-    ManageProjects
+    ManageProjects,
+    ListSelection
   ],
   imports: [
     BrowserModule,
