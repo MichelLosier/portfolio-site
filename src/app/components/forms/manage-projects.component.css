@@ -6,5 +6,5 @@
 }
 
 .forms {
-	
+	transition: color 2s, border 2s;
 }

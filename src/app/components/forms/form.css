@@ -14,12 +14,17 @@ label {
 }
 input {
 	border:1px solid #666;
-	font-size:1.25rem;
+	font-size:1rem;
+	padding: .5rem;
+	width: 75%;
 }
 button {
-	border-radius:20% solid #e26e26;
-	padding: 1rem;
+	margin: .25rem;
+	margin-left: 0;
+	border: 1px solid #e26e26;
+	padding: .5rem;
 	background-color: white;
+	font-size:1rem;
 }
 .inline {
 	display: inline-block;
