@@ -17,6 +17,13 @@ export class ArtworkService {
 
 	constructor(private http: Http) {}
 
+	getArtworkAll(): Observable<Artwork[]> {
+		const url = `${this.artworkUrl}`;
+		return this.http.get(url)
+			.map(response => response.json())
+			.catch(this.handleError);
+	}
+
 	getArtworkByID(artworkID: string): Observable <Artwork> {
 		const url = `${this.artworkUrl}id/${artworkID}`;
 		console.log(url);

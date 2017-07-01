@@ -36,7 +36,7 @@ exports.createProject = function(req, res, next){
 		if(err) return console.error(err);
 		res.status(200).json(project);
 	});
-}
+};
 
 //update project
 exports.updateProject = function(req, res, next){
@@ -44,7 +44,7 @@ exports.updateProject = function(req, res, next){
 		if(err) return console.error(err);
 		res.status(200);
 	});
-}
+};
 
 //delete project
 exports.deleteProject = function(req, res, next){
@@ -52,4 +52,4 @@ exports.deleteProject = function(req, res, next){
 		if(err) return console.error(err);
 		res.sendStatus(200);
 	});
-}
+};

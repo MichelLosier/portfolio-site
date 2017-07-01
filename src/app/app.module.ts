@@ -13,8 +13,8 @@ import { ArtworkCard } from './components/artwork-card/artwork-card.component'
 import { ProjectDetail } from './components/project-detail/project-detail.component';
 import { ProjectForm } from './components/forms/project-form.component';
 import { ArtworkForm } from './components/forms/artwork-form.component';
-import { ManageProjects } from './components/forms/manage-projects.component';
-import { ListSelection } from './components/list-selection/list-selection.component';
+import { ManageView } from './components/forms/manage-view.component';
+import { ProjectManager } from './components/project-manager/project-manager.component';
 
 import { ProjectGalleryService } from './services/project.service'
 import { ArtworkService } from './services/artwork.service';
@@ -32,8 +32,8 @@ import { GalleryImage } from  './components/gallery-image/gallery-image.componen
     GalleryImage,
     ProjectForm,
     ArtworkForm,
-    ManageProjects,
-    ListSelection
+    ManageView,
+    ProjectManager
   ],
   imports: [
     BrowserModule,

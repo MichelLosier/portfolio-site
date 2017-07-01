@@ -24,6 +24,7 @@ router.delete('/projects/id/:_id', projectCtrl.deleteProject);
 //artwork collection
 
 //get artwork
+router.get('/artwork', artworkCtrl.listAll);
 router.get('/artwork/id/:_id', artworkCtrl.queryID);
 router.get('/artwork/project/:_id', artworkCtrl.queryByProject);
 

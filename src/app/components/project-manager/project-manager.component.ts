@@ -10,20 +10,31 @@ import { ProjectArtworkFormService } from '../../services/project-artwork-form.s
 
 @Component({
 	moduleId: module.id,
-	selector: 'list-selection',
-	template: './list-selection.component.html',
-	styleUrls: ['./list-selection.component.css']
+	selector: 'project-manager',
+	templateUrl: './project-manager.component.html',
+	styleUrls: ['./project-manager.component.css']
 })
 
-export class ListSelection {
-	@Input() type: string
-	@Input() list: any[]
+export class ProjectManager {
+	list: Project[]
+	selectedItem: {};
 
 	constructor(
 		private formService: ProjectArtworkFormService,
 		private projectService: ProjectGalleryService,
 		private artworkService: ArtworkService
-	){}
-	
+	){
+		this.initializeList();
+	}
 
+	initializeList(){
+		this.projectService.getAllProjects()
+			.subscribe(projects => {
+				this.list = projects;
+			});
+	}
+
+	displayedList(){ //use sliding slice (returns new)
+
+	}
 }

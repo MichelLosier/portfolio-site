@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 dotenv.load({path: './server/app.env'});
 
 //Connect to DB
-mongoose.connect(process.env.MLAB_DB_URI);
+mongoose.connect(process.env.MONGO_DB_LOCAL_URI);
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

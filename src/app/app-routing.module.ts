@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { ProjectGallery } from './components/project-gallery/project-gallery.component';
 import { ProjectDetail } from './components/project-detail/project-detail.component'
-import { ManageProjects } from './components/forms/manage-projects.component';
+import { ManageView } from './components/forms/manage-view.component';
 const ROUTES: Routes = [
 	{
 		path: 'about',
@@ -24,7 +24,7 @@ const ROUTES: Routes = [
 	},
 	{
 		path: 'manage',
-		component: ManageProjects
+		component: ManageView
 	}
 ]
 

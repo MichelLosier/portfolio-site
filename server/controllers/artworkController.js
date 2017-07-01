@@ -1,5 +1,13 @@
 var Artwork = require('../models/artwork');
 
+exports.listAll = function(req, res, next){
+	Project.find(function(err, docs){
+		if(err) return console.error(err);
+		res.json(docs);
+	});
+
+};
+
 //get artwork by project id
 exports.queryByProject = function(req, res, next) {
 	Artwork.find({projects:[req.query._id]}, function(err, docs){
@@ -21,7 +29,7 @@ exports.createArtwork = function(req, res, next){
 		if(err) return console.error(err);
 		res.status(200).json(artwork);
 	});
-}
+};
 
 //update artwork
 exports.updateArtwork = function(req, res, next){
@@ -29,7 +37,7 @@ exports.updateArtwork = function(req, res, next){
 		if(err) return console.error(err);
 		res.status(200).json(artwork);
 	});
-}
+};
 
 //update multiple artworks by _id set
 exports.updateArtworks = function(req, res, next){ //TODO review params)
@@ -37,7 +45,7 @@ exports.updateArtworks = function(req, res, next){ //TODO review params)
 		if(err) return console.error(err);
 		res.status(200).json(artworks);
 	});
-}
+};
 
 //delete artwork
 exports.deleteArtwork = function(req, res, next){
@@ -45,4 +53,4 @@ exports.deleteArtwork = function(req, res, next){
 		if(err) return console.error(err);
 		res.status(200);
 	});
-}
+};
