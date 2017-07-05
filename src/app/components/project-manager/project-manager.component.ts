@@ -17,7 +17,8 @@ import { ProjectArtworkFormService } from '../../services/project-artwork-form.s
 
 export class ProjectManager {
 	list: Project[]
-	selectedItem: {};
+	selectedProject: Project;
+	selectedIndex: number;
 
 	constructor(
 		private formService: ProjectArtworkFormService,
@@ -27,6 +28,17 @@ export class ProjectManager {
 		this.initializeList();
 	}
 
+	projectSelect(project, index){
+		if ( this.selectedProject === project) {
+			this.selectedProject = undefined;
+			this.selectedIndex = undefined;
+			this.formService.announceSelectedProject(undefined);
+		} else {
+			this.selectedProject = project;
+			this.selectedIndex = index;
+			this.formService.announceSelectedProject(project);
+		}
+	}
 	initializeList(){
 		this.projectService.getAllProjects()
 			.subscribe(projects => {

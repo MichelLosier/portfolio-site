@@ -10,19 +10,19 @@ import { Artwork } from '../../models/artwork';
 
 export class GalleryImage implements OnInit {
 	baseUrl = "../assets/images/";
-	@Input() altText: string = ""
-	@Input() path: string;
-	@Input() fileName: string;
-	@Input() imageUrl: string; // can be user defined or provisioned via createUrl
+	@Input() artwork: Artwork;
+	imageUrl: string; 
 	loading: boolean = true;
 	
-	constructor(){}
+	constructor(){
+	}
 
 	ngOnInit(): void {
-		this.imageUrl = this.createUrl(this.path, this.fileName);
+		this.imageUrl = this.createUrl(this.artwork);
 	}
-	private createUrl (path: string, fileName: string) { //should this live with the object?
-		return `${this.baseUrl}${path}${fileName}`;
+	private createUrl (artwork) { //should this live with the object?
+		let fileName = artwork.preview ? artwork.preview : artwork.normal;
+		return `${this.baseUrl}${artwork.location}${fileName}`;
 	}
 	tempLoad(event): void {
 		this.imageUrl = ""

@@ -1,3 +1,7 @@
+h2 {
+	text-align:center;
+	color: #e26e26;
+}
 .row {
 	display: flex;
 	flex-direction: row;

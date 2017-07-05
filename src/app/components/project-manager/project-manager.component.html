@@ -1,8 +1,16 @@
+<h3>Manage Projects</h3>
 <ul>
 	<li
-		*ngFor="let item of list"
+		*ngFor="let project of list; let i = index"
+		(click)="projectSelect(project, i)"
+		[ngClass]="{'selected': i === selectedIndex}"
 		>
-		<gallery-image></gallery-image>
-		<p>{{item.name}}</p>
+		<div class="item-flex-container">
+			<gallery-image
+				[artwork]="project.featuredImage">
+			</gallery-image>
+			<p>{{project.name}}</p>
+			<div class="delete-button">X</div>
+		</div>
 	</li>
 </ul>

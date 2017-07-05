@@ -21,6 +21,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class ProjectForm {
 	projectForm: FormGroup;
+	selectedProject: Project;
 
 	@Input() project: Project;
 
@@ -40,6 +41,9 @@ export class ProjectForm {
 			this.gallery.push(res);
 			this.formService.announceNewArtwork(false);
 		});
+		this.formService.selectedProject$.subscribe( res => {
+			this.selectedProject = res;
+		})
 	}
 
 	private createForm() {

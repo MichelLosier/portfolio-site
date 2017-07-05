@@ -1,3 +1,41 @@
-gallery-image {
-	height: 200px;
+h3 {
+	text-align: center;
+}
+.item-flex-container {
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+}
+ul {
+	border: 1px solid #666;
+	padding: 0 1rem;
+}
+li {
+	margin: 1rem;
+	list-style: none;
+	border: 1px solid #666;
+}
+li.selected {
+	border: 1px solid #e26e26;
+	color: #e26e26;
+}
+li:hover {
+	border: 1px solid #e26e26;
+	cursor: pointer;
+}
+li p {
+	display:inline-block;
+	padding: 0 1rem;
+}
+
+li gallery-image {
+	display:inline-block;
+	height: 50px;
+}
+
+.delete-button {
+	display: inline-block;
+	padding: 1rem;
+	color:white;
+	background-color: #e26e26;
 }
