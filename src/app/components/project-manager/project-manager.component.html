@@ -4,13 +4,30 @@
 		*ngFor="let project of list; let i = index"
 		(click)="projectSelect(project, i)"
 		[ngClass]="{'selected': i === selectedIndex}"
-		>
+	>
 		<div class="item-flex-container">
 			<gallery-image
 				[artwork]="project.featuredImage">
 			</gallery-image>
 			<p>{{project.name}}</p>
-			<div class="delete-button">X</div>
+			<button 
+				class="inline delete-button" 
+				type="button" 
+				(click)="deleteSelectedProjectPrompt(project, i)"
+			>X</button>
 		</div>
 	</li>
 </ul>
+<div
+	*ngIf="(deleteRequest && selectedProject)"
+>
+	<p>Are you sure you want to delete the project: {{selectedProject.name}} ?</p>
+	<button
+		(click)="deleteSelectedProject(true)"
+	>yes
+	</button>
+	<button
+		(click)="deleteSelectedProject(false)"
+	>no
+	</button>
+</div>

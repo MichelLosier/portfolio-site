@@ -50,6 +50,6 @@ exports.updateProject = function(req, res, next){
 exports.deleteProject = function(req, res, next){
 	Project.findOneAndRemove({_id: req.params.id}, function(err){
 		if(err) return console.error(err);
-		res.sendStatus(200);
+		res.status(200);
 	});
 };
