@@ -10,3 +10,11 @@ export interface Artwork {
 	description: string;
 	altText: string;
 }
+
+export interface ArtworkCardModality {
+	displayImage: string, //'preview', 'normal', 'large'
+	showCaption: boolean,
+	showDescription: boolean,
+	clickForLarge: boolean,
+	cardType: string // 'gallery', 'management'
+}

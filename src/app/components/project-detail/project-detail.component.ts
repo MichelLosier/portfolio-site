@@ -27,6 +27,7 @@ export class ProjectDetail implements OnInit {
 		){
 
 	}
+		
 	ngOnInit(): void {
 		this.route.params
 			.switchMap((params: Params) => this.getProject(params['id']))
@@ -37,6 +38,7 @@ export class ProjectDetail implements OnInit {
 			});
 		
 	}
+
 	getProject(projectId: string){
 		console.log(`getProject was passed: ${projectId}`);
 		return this.projectService.getProjectByID(projectId);

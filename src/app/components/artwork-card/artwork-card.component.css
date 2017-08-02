@@ -1,5 +1,17 @@
-:host{
-	width:75%;
+div.cardContainer {
 	text-align: center;
+}
+
+div.cardContainer .gallery {
+	width:75%;
 	margin:3rem auto;
+}
+
+div.cardContainer .management {
+	width: 15%;
+	margin: 1rem;
+}
+
+h3, p {
+	text-align: center
 }

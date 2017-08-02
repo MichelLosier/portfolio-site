@@ -1,4 +1,17 @@
-<gallery-image
-	[artwork]="artwork"
+<div
+	*ngIf="artwork"
+	class="card-container"
+	[class]="modality.cardType" 
+>
+	<gallery-image
+		[imageUrl]="imageUrl"
+		[altText]="artwork.altText"
 	>
-</gallery-image>
+	</gallery-image>
+	<h3 *ngIf="modality.showCaption">
+		{{artwork.caption}}
+	</h3>
+	<p *ngIf="modality.showDescription">
+		{{artwork.description}}
+	</p>
+</div>

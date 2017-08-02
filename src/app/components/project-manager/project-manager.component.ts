@@ -1,13 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Project } from '../../models/project';
-import { Artwork } from '../../models/artwork';
 
 import { GalleryImage } from '../gallery-image/gallery-image.component';
 
-import { ArtworkService } from '../../services/artwork.service';
 import { ProjectGalleryService } from '../../services/project.service';
 import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';
-
+import { UrlConstructorService } from '../../services/urlConstructor.service';
 @Component({
 	moduleId: module.id,
 	selector: 'project-manager',
@@ -24,7 +22,7 @@ export class ProjectManager {
 	constructor(
 		private formService: ProjectArtworkFormService,
 		private projectService: ProjectGalleryService,
-		private artworkService: ArtworkService
+		private url$: UrlConstructorService
 	){
 		this.initializeList();
 	}
@@ -50,6 +48,11 @@ export class ProjectManager {
 
 	displayedList(){ //use sliding slice (returns new)
 
+	}
+
+	imageUrl(project){
+		const img = project.featuredImage;
+		return this.url$.createImageUrl(img.location, img.normal);
 	}
 
 	deleteSelectedProjectPrompt(project, index){

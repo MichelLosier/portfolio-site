@@ -39,6 +39,10 @@ export class ProjectArtworkFormService {
 		this.newArtwork.next(bool);
 	}
 
+	announceSelectedArtwork(artwork: Artwork){
+		this.selectedArtwork.next(artwork);
+	}
+
 	announceArtworkSubmission(artwork: Artwork){
 		this.submittedArtwork.next(artwork);
 	}
