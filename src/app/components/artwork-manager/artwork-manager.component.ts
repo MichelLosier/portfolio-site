@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Artwork } from '../../models/artwork';
 
 import { ArtworkCard } from '../artwork-card/artwork-card.component';
+import { ArtworkCardModality, mgmtArtworkCardConfig } from '../artwork-card/artwork-card.config';
 
 import { ArtworkService } from '../../services/artwork.service'
 import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artwork, ArtworkCardModality } from '../../models/artwork';
+import { Artwork  } from '../../models/artwork';
+import { ArtworkCardModality, defaultArtworkCardConfig } from './artwork-card.config'
 import { GalleryImage } from '../gallery-image/gallery-image.component';
 import { UrlConstructorService } from '../../services/urlConstructor.service';
 
@@ -7,22 +8,16 @@ import { UrlConstructorService } from '../../services/urlConstructor.service';
 	moduleId: module.id,
 	selector: 'artwork-card',
 	templateUrl: './artwork-card.component.html',
-	styleUrls: ['./artwork-card.component.css']
+	styleUrls: ['./artwork-card.component.css'],
 })
 
 export class ArtworkCard implements OnInit{
 
 	@Input() selected: boolean
 	@Input() artwork: Artwork
-	@Input() modality: ArtworkCardModality = {
-		displayImage: 'normal',
-		showCaption: true,
-		showDescription: true,
-		clickForLarge: false,
-		cardType: 'gallery'
-	}
+	@Input() modality: ArtworkCardModality = defaultArtworkCardConfig;
 
-	imageUrl: string = "";
+	imageUrl: string;
 
 	constructor (
 		private url$: UrlConstructorService
