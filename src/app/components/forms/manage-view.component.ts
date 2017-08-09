@@ -3,7 +3,8 @@ import { ProjectForm } from  './project-form.component';
 import { Project } from '../../models/project';
 import { Artwork } from '../../models/artwork';
 
-import { ProjectManager } from '../project-manager/project-manager.component'
+import { ProjectManager } from '../project-manager/project-manager.component';
+import { ArtworkManager } from '../artwork-manager/artwork-manager.component';
 
 import { ProjectArtworkFormService } from '../../services/project-artwork-form.service';
 

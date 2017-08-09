@@ -21,7 +21,9 @@ export class ArtworkCard implements OnInit{
 
 	constructor (
 		private url$: UrlConstructorService
-	){}
+	){
+		
+	}
 	
 	ngOnInit(): void {
 		this.imageUrl = this.artworkCardImage(this.modality.displayImage);

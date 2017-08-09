@@ -1,11 +1,10 @@
 var Artwork = require('../models/artwork');
 
 exports.listAll = function(req, res, next){
-	Project.find(function(err, docs){
+	Artwork.find(function(err, docs){
 		if(err) return console.error(err);
 		res.json(docs);
 	});
-
 };
 
 //get artwork by project id

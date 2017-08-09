@@ -37,7 +37,8 @@ import { GalleryImage } from  './components/gallery-image/gallery-image.componen
     ProjectForm,
     ArtworkForm,
     ManageView,
-    ProjectManager
+    ProjectManager,
+    ArtworkManager
   ],
   imports: [
     BrowserModule,

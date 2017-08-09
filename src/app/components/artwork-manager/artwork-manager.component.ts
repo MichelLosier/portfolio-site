@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Artwork } from '../../models/artwork';
 
 import { ArtworkCard } from '../artwork-card/artwork-card.component';
@@ -20,11 +20,17 @@ export class ArtworkManager {
     selectedIndex: number;
     deleteRequest: boolean = false;
     filter: string
+    cardModality: ArtworkCardModality;
 
     constructor(
         private formService: ProjectArtworkFormService,
         private artworkService: ArtworkService
     ){
+
+    }
+
+    ngOnInit(): void {
+        this.cardModality = mgmtArtworkCardConfig;
         this.initializeList();
     }
 

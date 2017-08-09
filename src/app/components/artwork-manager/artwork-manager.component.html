@@ -1,0 +1,20 @@
+<div>
+    <ul
+        *ngIf="list"
+        class="item-flex-container"
+    >
+        <li
+            *ngFor="let artwork of list; let i = index"
+            (click)="artworkSelect(artwork, i)"
+        >
+            <div>
+                <artwork-card
+                    [selected]="i === selectedIndex"
+                    [artwork]="artwork"
+                    [modality]="cardModality"
+                >
+                </artwork-card>
+            </div>
+        </li>
+    </ul>
+</div>
