@@ -1,13 +1,13 @@
-div.cardContainer {
+div.card-container {
 	text-align: center;
 }
 
-div.cardContainer .gallery {
+div.card-container.gallery {
 	width:75%;
 	margin:3rem auto;
 }
 
-div.cardContainer .management {
+div.card-container.management {
 	width: 30%;
 	margin: 1rem;
 }

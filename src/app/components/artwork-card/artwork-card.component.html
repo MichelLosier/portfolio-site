@@ -1,7 +1,6 @@
 <div
 	*ngIf="artwork"
-	class="card-container"
-	[class]="modality.cardType" 
+	[class]="'card-container ' + modality.cardType"
 >
 	<gallery-image
 		[imageUrl]="imageUrl"
