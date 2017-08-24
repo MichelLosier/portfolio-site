@@ -22,9 +22,7 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectForm {
 	projectForm: FormGroup;
 	selectedProject: Project;
-
-	@Input() project: Project;
-
+	newProject: boolean = true;
 
 	private tags: string[] = [];
 	private gallery: Artwork[] = [];
@@ -43,6 +41,9 @@ export class ProjectForm {
 		});
 		this.formService.selectedProject$.subscribe( res => {
 			this.selectedProject = res;
+		})
+		this.formService.newProject$.subscribe( res => {
+			this.newProject = res;
 		})
 	}
 
@@ -89,7 +90,7 @@ export class ProjectForm {
 	}
 
 	updateArtworkWithProject(projectId: string, artworks: string[]) {
-		let update = {
+		const update = {
 			artworks: artworks, // array of artwork _id to query
 			keys: { //keys to update
 				$push: {projects: projectId} //push is mongodb operator

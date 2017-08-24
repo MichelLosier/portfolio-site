@@ -10,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 export class ProjectArtworkFormService {
 	constructor(){}
 	//sources
+	private newProject = new Subject<boolean>();
 	private selectedProject = new Subject<Project>();
 	private submittedProject = new Subject<Project>();
 
@@ -18,6 +19,8 @@ export class ProjectArtworkFormService {
 	private submittedArtwork = new Subject<Artwork>();
 
 	//streams source.asObservable()
+
+	newProject$ = this.newProject.asObservable();
 	selectedProject$ = this.selectedProject.asObservable();
 	submittedProject$ = this.submittedProject.asObservable();
 
@@ -27,6 +30,9 @@ export class ProjectArtworkFormService {
 
 
 	//event commands source.next()
+	announceNewProject(bool: boolean){
+		this.newProject.next(bool);
+	}
 	announceSelectedProject(project: Project){
 		this.selectedProject.next(project);
 	}

@@ -32,10 +32,12 @@ export class ProjectManager {
 			this.selectedProject = undefined;
 			this.selectedIndex = undefined;
 			this.formService.announceSelectedProject(undefined);
+			this.formService.announceNewProject(true);
 		} else {
 			this.selectedProject = project;
 			this.selectedIndex = index;
 			this.formService.announceSelectedProject(project);
+			this.formService.announceNewProject(false);
 		}
 	}
 
