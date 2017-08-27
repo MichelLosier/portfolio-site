@@ -1,9 +1,13 @@
 <h2>Manage Portfolio</h2>
-<div class="row forms">
-	<project-manager></project-manager>
-	<project-form></project-form>
+<div class="row">
+	<div>
+		<project-manager></project-manager>
+	</div>
+	<div class="flex-2">
+		<project-form></project-form>
+	</div>
 </div>
-<div class="row forms">
+<div class="row">
 	<artwork-form
 		*ngIf="addNewArtwork">
 	</artwork-form>

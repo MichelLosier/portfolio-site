@@ -26,7 +26,7 @@ export class ProjectForm {
 
 	private tags: string[] = [];
 	private gallery: Artwork[] = [];
-	private featuredImage: string;
+	private featuredImage: Artwork;
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
@@ -41,10 +41,14 @@ export class ProjectForm {
 		});
 		this.formService.selectedProject$.subscribe( res => {
 			this.selectedProject = res;
+			this.handleFormChanges();
+			
 		})
 		this.formService.newProject$.subscribe( res => {
 			this.newProject = res;
+			this.handleFormChanges();
 		})
+		
 	}
 
 	private createForm() {
@@ -73,6 +77,36 @@ export class ProjectForm {
 	}
 
 
+	//form methods
+	handleFormChanges(){
+		if (this.selectedProject){
+			this.setProject(this.selectedProject);
+		} else if (this.newProject) {
+			this.resetForm();
+		}
+	}
+
+	setProject(project: Project): void {
+		const form = this.projectForm;
+		const formValues = {
+			name: project.name,
+			description: project.description,
+			category: project.category,
+			addTag: ''
+		}
+		form.setValue(formValues);
+		this.tags = project.tags;
+		this.gallery = project.gallery;
+		this.featuredImage = project.featuredImage;
+	}
+
+	resetForm(){
+		this.projectForm.reset();
+		this.gallery = [];
+		this.tags = [];
+		this.featuredImage = undefined;
+	}
+
 	prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
 		const galleryReduce = this.gallery.map((artwork) => {
@@ -89,9 +123,13 @@ export class ProjectForm {
 		return saveProject;
 	}
 
-	updateArtworkWithProject(projectId: string, artworks: string[]) {
+	updateArtworkWithProject(projectId: string, artworks: Artwork[]) {
+		const artworkIds = [];
+		artworks.map((artwork) => {
+				artworkIds.push(artwork._id)
+			})
 		const update = {
-			artworks: artworks, // array of artwork _id to query
+			artworks: artworkIds, // array of artwork _id to query
 			keys: { //keys to update
 				$push: {projects: projectId} //push is mongodb operator
 			}
@@ -109,10 +147,9 @@ export class ProjectForm {
 		this.projectGalleryService.createProject(project).subscribe(
 			res => {
 				console.log(res);
-				this.projectForm.reset();
+				this.resetForm();
 				this.formService.announceProjectSubmission(res);
 				this.updateArtworkWithProject(res._id, project.gallery);
-				this.gallery = [];
 			}
 		);
 	}

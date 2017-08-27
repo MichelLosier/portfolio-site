@@ -25,16 +25,17 @@ export class ProjectManager {
 		private url$: UrlConstructorService
 	){
 		this.initializeList();
+		this.formService.selectedProject$.subscribe( res => {
+			this.selectedProject = res;		
+		});
 	}
 
 	projectSelect(project, index){
 		if ( this.selectedProject === project) {
-			this.selectedProject = undefined;
 			this.selectedIndex = undefined;
 			this.formService.announceSelectedProject(undefined);
 			this.formService.announceNewProject(true);
 		} else {
-			this.selectedProject = project;
 			this.selectedIndex = index;
 			this.formService.announceSelectedProject(project);
 			this.formService.announceNewProject(false);
@@ -55,6 +56,13 @@ export class ProjectManager {
 	imageUrl(project){
 		const img = project.featuredImage;
 		return this.url$.createImageUrl(img.location, img.normal);
+	}
+
+	handleCreateNewProject(){
+		this.formService.announceNewProject(true);
+		this.formService.announceSelectedProject(undefined);
+		this.selectedIndex = -1
+		
 	}
 
 	deleteSelectedProjectPrompt(project, index){

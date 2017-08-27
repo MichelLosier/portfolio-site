@@ -9,5 +9,5 @@ export interface Project {
 	featuredImage: Artwork;
 	category: string;
 	tags?: string[]
-	gallery: string[];
+	gallery: Artwork[];
 }
