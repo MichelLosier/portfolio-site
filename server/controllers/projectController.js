@@ -40,9 +40,10 @@ exports.createProject = function(req, res, next){
 
 //update project
 exports.updateProject = function(req, res, next){
-	Project.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
+	Project.findOneAndUpdate({_id: req.params._id}, {$set: req.body}, {new: true}, function(err, project) {
 		if(err) return console.error(err);
-		res.status(200);
+		console.log('returned from db: ' + JSON.stringify(project));
+		res.status(200).json(project);
 	});
 };
 

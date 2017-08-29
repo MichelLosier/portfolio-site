@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 
 import { GalleryImage } from '../gallery-image/gallery-image.component';
@@ -13,7 +13,7 @@ import { UrlConstructorService } from '../../services/urlConstructor.service';
 	styleUrls: ['./project-manager.component.css', '../forms/form.css']
 })
 
-export class ProjectManager {
+export class ProjectManager implements OnInit {
 	list: Project[]
 	selectedProject: Project;
 	selectedIndex: number;
@@ -24,9 +24,17 @@ export class ProjectManager {
 		private projectService: ProjectGalleryService,
 		private url$: UrlConstructorService
 	){
+		
+	}
+
+	ngOnInit(){
 		this.initializeList();
+		this.formService.submittedProject$.subscribe( res => {
+			this.initializeList();
+		});
 		this.formService.selectedProject$.subscribe( res => {
-			this.selectedProject = res;		
+			this.selectedProject = res;	
+			this.selectedIndex = undefined;	
 		});
 	}
 

@@ -107,29 +107,39 @@ export class ProjectForm {
 		this.featuredImage = undefined;
 	}
 
+	galleryReduce(gallery: Artwork[]): string[] {
+		return gallery.map((artwork) => {
+			return artwork._id;
+		});
+	}
+
+	galleryRemoveAlreadyLinked(projectId: string, gallery: Artwork[]): Artwork[] {
+		return gallery.map((artwork) => {
+			if (artwork.projects.indexOf(projectId) < 0){
+				return artwork
+			}
+		})
+	}
+
 	prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
-		const galleryReduce = this.gallery.map((artwork) => {
-				return artwork._id;
-			});
+		const gallery = this.galleryReduce(this.gallery);
 		const saveProject: Project = {
 			name: formModel.name,
 			description: formModel.description,
 			category: formModel.category,
-			featuredImage:  this.featuredImage || galleryReduce[0],
+			featuredImage:  this.featuredImage._id || gallery[0],
 			tags: this.tags,
-			gallery: galleryReduce
+			gallery: gallery
 		}
 		return saveProject;
 	}
 
-	updateArtworkWithProject(projectId: string, artworks: Artwork[]) {
-		const artworkIds = [];
-		artworks.map((artwork) => {
-				artworkIds.push(artwork._id)
-			})
+	updateArtworkWithProject(projectId: string) {
+		const galleryFiltered = this.galleryRemoveAlreadyLinked(projectId, this.gallery);
+		const gallery = this.galleryReduce(galleryFiltered);
 		const update = {
-			artworks: artworkIds, // array of artwork _id to query
+			artworks: gallery, // array of artwork _id to query
 			keys: { //keys to update
 				$push: {projects: projectId} //push is mongodb operator
 			}
@@ -144,13 +154,34 @@ export class ProjectForm {
 	//submission
 	onSubmit(): void {
 		const project = this.prepareSaveProject();
+		(this.newProject) ? (
+			this.newProjectSubmission(project) 
+		):(
+			this.updateProjectSubmission(this.selectedProject._id, project)
+		)
+	}
+
+	newProjectSubmission(project: Project){
 		this.projectGalleryService.createProject(project).subscribe(
 			res => {
 				console.log(res);
 				this.resetForm();
 				this.formService.announceProjectSubmission(res);
-				this.updateArtworkWithProject(res._id, project.gallery);
+				this.updateArtworkWithProject(res._id);
 			}
 		);
+	}
+
+	updateProjectSubmission(projectId: string, project: Project){
+		console.log(`update project called`);
+		this.projectGalleryService.updateProject(projectId, project).subscribe(
+			res => {
+				this.resetForm();
+				this.formService.announceProjectSubmission(res);
+				this.formService.announceNewProject(true);
+				this.formService.announceSelectedProject(undefined);
+				this.updateArtworkWithProject(res._id);
+			}
+		)
 	}
 }

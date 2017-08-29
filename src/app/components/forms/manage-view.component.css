@@ -13,6 +13,6 @@ h2 {
 	margin: 2rem
 }
 
-.flex-2 {
-	flex-grow:2;
+.flex-form {
+	flex-basis: 50%;
 }

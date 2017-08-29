@@ -46,10 +46,10 @@ export class ProjectGalleryService {
 	}
 
 	//PATCH
-	updateProject(projectID: string, project: Project): Observable <Response> {
+	updateProject(projectID: string, project: Project): Observable <Project> {
 		const url = `${this.projectsUrl}id/${projectID}`;
-		return this.http.patch(url, project, this.options)
-			.map(response => response.json() as Response)
+		return this.http.patch(url, JSON.stringify(project), this.options)
+			.map(response => response.json())
 			.catch(this.handleError);
 	}
 
