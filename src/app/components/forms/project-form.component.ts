@@ -22,13 +22,11 @@ import { Observable } from 'rxjs/Observable';
 export class ProjectForm {
 	projectForm: FormGroup;
 	selectedProject: Project;
-
-	@Input() project: Project;
-
+	newProject: boolean = true;
 
 	private tags: string[] = [];
 	private gallery: Artwork[] = [];
-	private featuredImage: string;
+	private featuredImage: Artwork;
 
 	constructor(
 		private projectGalleryService: ProjectGalleryService,
@@ -43,7 +41,14 @@ export class ProjectForm {
 		});
 		this.formService.selectedProject$.subscribe( res => {
 			this.selectedProject = res;
+			this.handleFormChanges();
+			
 		})
+		this.formService.newProject$.subscribe( res => {
+			this.newProject = res;
+			this.handleFormChanges();
+		})
+		
 	}
 
 	private createForm() {
@@ -72,25 +77,69 @@ export class ProjectForm {
 	}
 
 
+	//form methods
+	handleFormChanges(){
+		if (this.selectedProject){
+			this.setProject(this.selectedProject);
+		} else if (this.newProject) {
+			this.resetForm();
+		}
+	}
+
+	setProject(project: Project): void {
+		const form = this.projectForm;
+		const formValues = {
+			name: project.name,
+			description: project.description,
+			category: project.category,
+			addTag: ''
+		}
+		form.setValue(formValues);
+		this.tags = project.tags;
+		this.gallery = project.gallery;
+		this.featuredImage = project.featuredImage;
+	}
+
+	resetForm(){
+		this.projectForm.reset();
+		this.gallery = [];
+		this.tags = [];
+		this.featuredImage = undefined;
+	}
+
+	galleryReduce(gallery: Artwork[]): string[] {
+		return gallery.map((artwork) => {
+			return artwork._id;
+		});
+	}
+
+	galleryRemoveAlreadyLinked(projectId: string, gallery: Artwork[]): Artwork[] {
+		return gallery.map((artwork) => {
+			if (artwork.projects.indexOf(projectId) < 0){
+				return artwork
+			}
+		})
+	}
+
 	prepareSaveProject(): Project {
 		const formModel = this.projectForm.value;
-		const galleryReduce = this.gallery.map((artwork) => {
-				return artwork._id;
-			});
+		const gallery = this.galleryReduce(this.gallery);
 		const saveProject: Project = {
 			name: formModel.name,
 			description: formModel.description,
 			category: formModel.category,
-			featuredImage:  this.featuredImage || galleryReduce[0],
+			featuredImage:  this.featuredImage._id || gallery[0],
 			tags: this.tags,
-			gallery: galleryReduce
+			gallery: gallery
 		}
 		return saveProject;
 	}
 
-	updateArtworkWithProject(projectId: string, artworks: string[]) {
-		let update = {
-			artworks: artworks, // array of artwork _id to query
+	updateArtworkWithProject(projectId: string) {
+		const galleryFiltered = this.galleryRemoveAlreadyLinked(projectId, this.gallery);
+		const gallery = this.galleryReduce(galleryFiltered);
+		const update = {
+			artworks: gallery, // array of artwork _id to query
 			keys: { //keys to update
 				$push: {projects: projectId} //push is mongodb operator
 			}
@@ -105,14 +154,34 @@ export class ProjectForm {
 	//submission
 	onSubmit(): void {
 		const project = this.prepareSaveProject();
+		(this.newProject) ? (
+			this.newProjectSubmission(project) 
+		):(
+			this.updateProjectSubmission(this.selectedProject._id, project)
+		)
+	}
+
+	newProjectSubmission(project: Project){
 		this.projectGalleryService.createProject(project).subscribe(
 			res => {
 				console.log(res);
-				this.projectForm.reset();
+				this.resetForm();
 				this.formService.announceProjectSubmission(res);
-				this.updateArtworkWithProject(res._id, project.gallery);
-				this.gallery = [];
+				this.updateArtworkWithProject(res._id);
 			}
 		);
+	}
+
+	updateProjectSubmission(projectId: string, project: Project){
+		console.log(`update project called`);
+		this.projectGalleryService.updateProject(projectId, project).subscribe(
+			res => {
+				this.resetForm();
+				this.formService.announceProjectSubmission(res);
+				this.formService.announceNewProject(true);
+				this.formService.announceSelectedProject(undefined);
+				this.updateArtworkWithProject(res._id);
+			}
+		)
 	}
 }

@@ -6,8 +6,8 @@ export interface Project {
 	position?: number;
 	dateAdded?: Date;
 	description: string;
-	featuredImage: Artwork;
+	featuredImage: any;
 	category: string;
 	tags?: string[]
-	gallery: string[];
+	gallery: any[];
 }

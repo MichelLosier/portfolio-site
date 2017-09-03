@@ -10,9 +10,9 @@
 	</div>
 	<div class="form-group">
 		<label for="description">Description:</label>
-		<input type="text" class="form-control"
+		<textarea type="text" class="form-control"
 			formControlName="description"
-			name="description">
+			name="description"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="category">Category:</label>
@@ -30,10 +30,7 @@
 	</div>
 	<div>
 		<label>Gallery:</label>
-		<artwork-card
-		*ngFor="let artwork of gallery"
-		[artwork]=artwork>
-		</artwork-card>
+
 	</div>
 	<div class="form-group">
 		<button type="button"
@@ -46,5 +43,12 @@
 
 		<p>Reserved for Gallery property and artwork form</p>
 	</div>
-	<button type="submit">Submit New Project</button>
+	<button 
+		*ngIf="newProject"
+		type="submit"
+	>Submit New Project</button>
+	<button 
+		*ngIf="!(newProject)"
+		type="submit"
+	>Update Project</button>
 </form>

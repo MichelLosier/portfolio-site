@@ -9,7 +9,10 @@ h2 {
 	flex-flow: wrap;
 }
 
-.forms {
-	transition: color 2s, border 2s;
+.row > * {
+	margin: 2rem
 }
 
+.flex-form {
+	flex-basis: 50%;
+}
